@@ -1,0 +1,440 @@
+body {
+  font-family: "Oswald", sans-serif;
+  background-color: #fbfbfb;
+  color: #3F3F44;
+}
+.header-container {
+  padding: 3rem 7% 0;
+}
+h1,
+h2 {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+}
+h4 {
+  font-weight: 500;
+  margin: 0;
+}
+h5 {
+  font-weight: 400;
+  margin: 0;
+}
+h2 {
+  font-size: 1.8rem;
+}
+.card-header {
+  text-align: center;
+}
+.button-div {
+  padding-top: 3rem;
+}
+noscript p {
+  padding: 0 0 3rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-decoration: underline;
+}
+a {
+  white-space: nowrap;
+}
+/* =============================================   FOCUSABLE ELEMENTS   =============================================== */
+.form-control:focus,
+.nav-link:focus {
+  border-color: #ff0000;
+  box-shadow: inset 0 .2rem .2rem rgba(0, 0, 0, 0.075), 0 0 .4rem rgba(255, 0, 0, 0.6);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.icon-link {
+  outline: none;
+}
+.img-drop-shadow {
+  transform: translateZ(0);
+  filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, .6));
+  -webkit-transform: translateZ(0);
+  -webkit-filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, .6));
+}
+/* =====================================================   NAVBAR   ======================================================== */
+.navbar-container {
+  padding: 0;
+}
+.navbar {
+  padding: 20px 4% 10px 7%;
+}
+.navbar-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  color: #3F3F44 !important;
+}
+/* ====================================================   TITLE   ==================================================== */
+#title .header-container {
+  padding-bottom: 3.5rem;
+  padding-top: 3.5rem;
+}
+/* =================================================   TOOLS & TECH   ================================================== */
+#tools {
+  padding-bottom: 1rem;
+}
+.icons-container {
+  padding: 2rem 0;
+}
+.collapse-container {
+  padding: 0 10%;
+}
+/* ======================================================   MATCH SIM   ================================================= */
+.football-container {
+  color: #3F3F44;
+  padding: 0;
+}
+.form-item {
+  padding: 1.5rem 5% 4.5rem;
+}
+.select-card-header, .results-card-header {
+  background-color: #474749;
+  color: #fbfbfb;
+}
+.select-card-body {
+  background-color: #eeebeb;
+  padding: 1rem 1.25rem;
+}
+.top-select-card {
+  margin-bottom: 10px;
+}
+#teams1,
+#teams2 {
+  margin-top: 10px;
+}
+/* -------------------------  Results  ---------------------------- */
+.result-item {
+  padding: 2.2rem 4% 5rem;
+}
+.results-card-header {
+  text-align: left;
+}
+.results-card-body {
+  background-color: #f1f0f0;
+  padding: .4rem 1.25rem 1rem;
+}
+.hide-body {
+  padding: 0 !important;
+}
+.score-row {
+  align-items: center;
+}
+.score {
+  display: inline-block;
+  font-size: 2.5rem;
+}
+.team1-name-col {
+  padding: 0 6% 0 3%;
+}
+.team2-name-col {
+  padding: 0 3% 0 6%;
+}
+.goals1-col {
+  text-align: right;
+  padding: 0;
+}
+.goals2-col {
+  padding: 0;
+}
+.dash-col {
+  text-align: center;
+  padding: 0 3%;
+}
+.team2-name {
+  text-align: right;
+}
+/* --------------------------  Events  ------------------------------ */
+.red-card {
+  display: inline-block;
+  background-color: red;
+  width: 11px;
+  height: 16px;
+  border-radius: 2px;
+}
+.events {
+  color: #3F3F44;
+  line-height: 1.2;
+}
+.events-row {
+  display: flex;
+  align-items: center;
+  padding-top: .8rem;
+}
+.team1-event-min {
+  text-align: right;
+  padding: 0 2px 0 0;
+}
+.team2-event-min {
+  padding: 0 0 0 2px;
+}
+.team1-event-type,
+.team2-event-type {
+  text-align: center;
+  padding: 0;
+}
+.team1-event-name {
+  padding-left: 5px;
+}
+.team2-event-name {
+  text-align: right;
+  padding-right: 5px;
+}
+/* ====================================================    CONTACT    ======================================================= */
+.footer-container {
+  padding: 2rem 14%;
+  text-align: center;
+}
+.contact-icon {
+  margin: 0 10px;
+  font-size: 2.5rem;
+  color: #474749;
+}
+/* .contact-icon:hover {
+  color: #111111;
+} */
+/* ======================================================    MEDIA QUERIES    ====================================================== */
+@media screen and (min-width: 576px) {
+  /* -------------------------------------------   576px   ------------------------------------------- */
+  h2 {
+    font-size: 2.25rem;
+  }
+  h5 {
+    font-size: 1.5rem;
+  }
+  .subtext {
+    font-size: 1.3rem;
+  }
+  /* ---------------------- */
+  .navbar-brand {
+    font-size: 1.4rem;
+  }
+  /* ---------------------- */
+  .icons-container {
+    padding: 2.5rem;
+  }
+  .img-col {
+    padding: 0 1.5rem;
+  }
+  /* ---------------------- */
+  #teams1,
+  #teams2 {
+    margin-top: 15px;
+  }
+  .select-card-header {
+    padding: .75rem 1.25rem;
+  }
+  .responsive-select {
+    height: calc(1.5em + 1rem + 2px);
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+  }
+  .result-item {
+    padding: 3rem 10% 5.5rem;
+  }
+  /* ---------------------- */
+  .contact-icon {
+    font-size: 3rem;
+    margin: 0 12px 2px;
+  }
+}
+@media screen and (min-width: 768px) {
+  /* -------------------------------------------   768px   ------------------------------------------- */
+  .header-container {
+    padding: 4.5rem 12% 0;
+  }
+  #title .header-container {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .subtext {
+    font-size: 1.5rem;
+  }
+  /* ---------------------- */
+  .navbar {
+    padding: 30px 10% 15px;
+  }
+  .navbar-brand {
+    font-size: 1.7rem;
+  }
+  /* ---------------------- */
+  #tools {
+    padding-bottom: 3rem;
+  }
+  .descrip {
+    font-size: 1.2rem;
+  }
+  .icons-container {
+    padding: 2.5rem 3rem 3rem;
+  }
+  .img-col {
+    padding: 0 2.2rem;
+  }
+  .django-col {
+    padding: 0 2.5rem;
+  }
+  .collapse-container {
+    padding: 0 16%;
+  }
+  /* ---------------------- */
+  .form-item {
+    padding: 3.5rem 8% 6.5rem;
+  }
+  .result-item {
+    padding: 3rem 15% 6rem;
+  }
+  .results-card-body {
+    padding: .4rem 5% 1rem;
+  }
+  .score {
+    font-size: 3.2rem;
+  }
+  .events {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (min-width: 960px) {
+  /* -------------------------------------------   960px   ------------------------------------------- */
+  noscript p {
+    font-size: 1.6rem;
+  }
+  h1 {
+    font-size: 3.25rem;
+  }
+  h2 {
+    font-size: 2.75rem;
+  }
+  /* ---------------------- */
+  .header-container {
+    padding: 5.5rem 16% 0;
+  }
+  #title .header-container {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  /* ---------------------- */
+  .navbar {
+    padding: 3rem 14% 1.5rem;
+  }
+  .nav-item {
+    font-size: 1.15rem;
+    padding: 0 5px;
+  }
+  .navbar-brand {
+    font-size: 1.8rem;
+  }
+  /* ---------------------- */
+  .descrip {
+    font-size: 1.3rem;
+  }
+  .icons-container {
+    padding: 3.5rem 7%;
+  }
+  .img-col,
+  .django-col {
+    padding: 0 3rem;
+  }
+  .collapse-container {
+    padding: 0 18%;
+  }
+  /* ---------------------- */
+  .form-item {
+    padding: 3rem 15% 7rem;
+  }
+  .select-card-body {
+    padding: 2rem 1.5rem;
+  }
+  #teams1,
+  #teams2 {
+    margin-top: 22px;
+  }
+  .result-item {
+    padding: 3rem 18% 6rem;
+  }
+  .team1-name,
+  .team2-name {
+    font-size: 1.9rem;
+  }
+  .events-row {
+    padding-top: 1rem;
+  }
+  .events {
+    font-size: 1.3rem;
+  }
+  /* ---------------------- */
+  .contact-icon {
+    font-size: 4rem;
+    margin: 0 18px 10px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  /* -------------------------------------------   1200px   ------------------------------------------- */
+  /* ---------------------- */
+  .navbar {
+    padding-right: 18%;
+    padding-left: 18%;
+  }
+  .nav-item {
+    padding: 0 8px;
+  }
+  /* ---------------------- */
+  .header-container {
+    padding: 5.5rem 20% 0;
+  }
+  #title .header-container {
+    padding-bottom: 7rem;
+  }
+  .button-div {
+    padding-top: 4rem;
+  }
+  /* ---------------------- */
+  #tools {
+    padding-bottom: 4rem;
+  }
+  .icons-container {
+    padding-bottom: 4rem;
+  }
+  .img-col {
+    padding: 0 3.2rem;
+  }
+  .django-col {
+    padding: 0 3.5rem;
+  }
+  .collapse-container {
+    padding: 0 24%;
+  }
+  /* ---------------------- */
+  .form-item {
+    padding: 3.5rem 22% 8rem;
+  }
+  .result-item {
+    padding-left: 22%;
+    padding-right: 22%;
+  }
+  .score {
+    font-size: 3.5rem;
+  }
+  .results-card-body {
+    padding: .5rem 4% 1.1rem;
+  }
+}
+@media screen and (min-width: 1440px) {
+  /* -------------------------------------------   1440px   ------------------------------------------- */
+  .nav-item {
+    font-size: 1.25rem;
+  }
+  .subtext {
+    font-size: 1.6rem;
+  }
+  .btn-lg {
+    font-size: 1.35rem;
+  }
+  #toTranslate,
+  #translation {
+    height: 230px;
+    font-size: 1.6rem;
+  }
+}

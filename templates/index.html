@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="description" content="My personal website" />
+   <meta name="author" content="Dixon Grossnickle" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>dixon grossnickle | personal website</title>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Ubuntu:wght@500&display=swap" />
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+   <script async src="https://kit.fontawesome.com/565e8772bc.js" crossorigin="anonymous"></script>
+   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+   <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+   <script defer src="{% static 'js/index.js' %}"></script>
+   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon.png' %}" />
+   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}" />
+   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}" />
+</head>
+
+<body>
+   <!-- Title Section -->
+   <section id="title">
+      <div class="container-fluid navbar-container">
+         <nav class="navbar navbar-expand-lg navbar-light">
+            <h1 class="navbar-brand">dixon grossnickle</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="#match-simulator">simulator</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="#contact">contact</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </div>
+      <div class="container-fluid header-container">
+         <noscript>
+            <p>This page won't work without JavaScript – make sure it's enabled in your browser settings.</p>
+         </noscript>
+         <h1>hello</h1>
+         <p class="subtext title-description">
+            I'm a senior at UT Austin majoring in MIS. I built this website to learn about full stack web
+            development.
+         </p>
+      </div>
+   </section>
+
+   <!-- Tools Section -->
+   <section id="tools">
+      <div class="container-fluid header-container">
+         <h2>
+            tools & technologies
+         </h2>
+         <p class="subtext">
+            Click the icons for more information about my programming experience.
+         </p>
+         <div class="container-fluid icons-container" style="overflow: visible !important;">
+            <div class="row">
+               <div class="col img-col">
+                  <a class='icon-link d-block' role="button" tabindex="0" aria-expanded="false" aria-controls="descrip1">
+                     <img class="img-fluid" src="{% static 'images/icons/Python-logo-notext.svg' %}" alt="Python icon">
+                  </a>
+               </div>
+               <div class="col-4 img-col django-col d-flex">
+                  <a class='icon-link d-block align-self-center' role="button" tabindex="0" aria-expanded="false" aria-controls="descrip2">
+                     <img class="img-fluid" src="{% static 'images/icons/django-logo.svg' %}" alt="Django icon">
+                  </a>
+               </div>
+               <div class="col img-col">
+                  <a class='icon-link d-block' role="button" tabindex="0" aria-expanded="false" aria-controls="descrip3">
+                     <img class="img-fluid" src="{% static 'images/icons/javascript-logo.svg' %}" alt="JavaScript icon">
+                  </a>
+               </div>
+               <div class="col img-col">
+                  <a class='icon-link d-block' role="button" tabindex="0" aria-expanded="false" aria-controls="descrip4">
+                     <img class="img-fluid" src="{% static 'images/icons/bootstrap-logo.svg' %}" alt="Bootstrap icon">
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="container-fluid collapse-container">
+         <div class="collapse" id="descrip1">
+            <div class="card card-body tools-card">
+               <h4 class="mb-3">Python</h4>
+               <p class="descrip">Python is the reason I built this site. It was the first language I learned, and I wanted to build an interface for Python programs I had written. The simulator uses the pandas library to analyze season statistics and FIFA ratings, and then chooses an outcome based on probability distributions.</p>
+            </div>
+         </div>
+         <div class="collapse" id="descrip2">
+            <div class="card card-body tools-card">
+               <h4 class="mb-3">Django</h4>
+               <p class="descrip">Django is the web framework that runs the site. I chose to learn Django because not only is it written in Python, it's also incredibly robust. This site uses only a fraction of Django's functionality — I just liked it a lot and wanted to get familiar with it.</p>
+            </div>
+         </div>
+         <div class="collapse" id="descrip3">
+            <div class="card card-body tools-card">
+               <h4 class="mb-3">JavaScript</h4>
+               <p class="descrip">This site was my first introduction to JavaScript. At first, I just needed a few functions for the site to work. But once I got more comfortable with JavaScript, I decided to use a single Django view that would update without refreshing, which I accomplished with AJAX and jQuery.</p>
+            </div>
+         </div>
+         <div class="collapse" id="descrip4">
+            <div class="card card-body tools-card">
+               <h4 class="mb-3">HTML/CSS</h4>
+               <p class="descrip">Using Twitter's Bootstrap library was a great introduction into HTML and CSS. It made designing a mobile-friendly, responsive layout much simpler, and some of Bootstrap's components were perfect for implementing my simulator.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- Football Sim Section -->
+   <section id="match-simulator">
+      <div class="container-fluid header-container">
+         <h2>soccer match simulator</h2>
+         <p class="subtext">
+            Simulate a match between any two teams from Europe's top five leagues (based on 2019-20 season results).
+         </p>
+      </div>
+      <div class="container-fluid football-container">
+         <div class="football-carousel carousel slide" data-interval="false" data-touch="false">
+            <div class="carousel-inner">
+               <div class="form-item carousel-item active">
+                  <form class="footballForm" method="GET" action="." data-url="{{ request.build_absolute_uri|safe }}">
+                     <div class="row">
+                        <div class="col-sm">
+                           <div class="card select-card top-select-card">
+                              <div class="card-header select-card-header">
+                                 <h5>Home</h5>
+                              </div>
+                              <div class="card-body select-card-body">
+                                 <select class="form-control responsive-select" id="leagues1" required>
+                                    <option value="epl" selected>Premier League – England</option>
+                                    <option value="bundesliga">Bundesliga – Germany</option>
+                                    <option value="serie_a">Serie A – Italy</option>
+                                    <option value="la_liga">La Liga – Spain</option>
+                                    <option value="ligue_1">Ligue 1 – France</option>
+                                 </select>
+                                 <select class="form-control responsive-select" id="teams1" required>
+                                    <!-- Teams populated by javascript --></select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm">
+                           <div class="card select-card">
+                              <div class="card-header select-card-header">
+                                 <h5>Away</h5>
+                              </div>
+                              <div class="card-body select-card-body">
+                                 <select class="form-control responsive-select" id="leagues2" required>
+                                    <option value="epl" selected>Premier League – England</option>
+                                    <option value="bundesliga">Bundesliga – Germany</option>
+                                    <option value="serie_a">Serie A – Italy</option>
+                                    <option value="la_liga">La Liga – Spain</option>
+                                    <option value="ligue_1">Ligue 1 – France</option>
+                                 </select>
+                                 <select class="form-control responsive-select" id="teams2" required>
+                                    <!-- Teams populated by javascript --></select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="d-flex justify-content-center button-div">
+                        <button type="submit" class="btn btn-dark btn-lg sim-button" tabindex="0">simulate</button>
+                     </div>
+                  </form>
+               </div>
+               <div class="carousel-item result-item">
+                  <div class="card results-card">
+                     <div class="card-header results-card-header">
+                        <div class="row score-row">
+                           <div class="col team1-name-col">
+                              <h5 class="team1-name"></h5>
+                           </div>
+                           <div class="col-auto goals1-col">
+                              <h5 class="score team1-score"></h5>
+                           </div>
+                           <div class="col-auto dash-col">
+                              <h5 class="score dash">-</h5>
+                           </div>
+                           <div class="col-auto goals2-col">
+                              <h5 class="score team2-score"></h5>
+                           </div>
+                           <div class="col team2-name-col">
+                              <h5 class="team2-name"></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-body results-card-body">
+                        <!-- Match results inserted here by javascript -->
+                     </div>
+                  </div>
+                  <div class="d-flex justify-content-center button-div">
+                     <button class="btn btn-dark btn-lg reset-btn" tabindex="0">reset</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- Footer Section -->
+   <section id="contact">
+      <div class="container-fluid footer-container">
+            <a id="email-btn-link" class="d-inline-block icon-link" role="button" tabindex="0" data-toggle="tooltip" data-container="body" title="Copy email address" aria-label="Copy email address to clipboard">
+               <i class="far fa-envelope contact-icon"></i>
+            </a>
+            <a class="d-inline-block icon-link" href="https://linkedin.com/in/dixon-grossnickle" tabindex="0" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+               <i class="fab fa-linkedin contact-icon"></i>
+            </a>
+         <div style="visibility:hidden; height:0; width:0;"><i class="fas fa-futbol"></i></div>
+      </div>
+   </section>
+
+</body>
+
+</html>

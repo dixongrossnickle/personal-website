@@ -1,0 +1,6 @@
+.DS_Store
+.jsbeautifyrc
+.vscode/
+__pycache__/
+staticfiles/
+**/league_matches

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>404 - Not Found</title>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Ubuntu:wght@500&display=swap" />
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+   <script async src="https://kit.fontawesome.com/565e8772bc.js" crossorigin="anonymous"></script>
+   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+   <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+   <script defer src="{% static 'js/index.js' %}"></script>
+   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon.png' %}" />
+   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}" />
+   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}" />
+   <style>
+      html {
+         height: 100%;
+      }
+      body {
+         min-height: 100%;
+         background-color: #ebe6e6;
+      }
+      #content {
+         flex: 1;
+         padding-bottom: 8rem;
+      }
+      @media screen and (min-width: 960px) {
+         #content {
+            padding-bottom: 14rem;
+         }
+      }
+   </style>
+</head>
+
+<body class="d-flex flex-column">
+   <div class="container-fluid header-container" id="content">
+      <h1>404 – Page Not Found</h1>
+      <p class="subtext">The requested resource was not found on this server.</p>
+      <p class="subtext" style="padding: 3rem 0;">
+         <a href="https://www.dixongrossnickle.com">www.dixongrossnickle.com</a>
+      </p>
+   </div>
+   <div class="container-fluid footer-container">
+      <a id="email-btn-link" class="d-inline-block icon-link" role="button" tabindex="0" data-toggle="tooltip" data-container="body" title="Copy email address" aria-label="Copy email address to clipboard">
+         <i class="far fa-envelope contact-icon"></i>
+      </a>
+      <a class="d-inline-block icon-link" href="https://linkedin.com/in/dixon-grossnickle" tabindex="0" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+         <i class="fab fa-linkedin contact-icon"></i>
+      </a>
+   </div>
+</body>
+
+</html>
