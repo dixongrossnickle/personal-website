@@ -1,9 +1,17 @@
+.DS_Store
+
+# VS Code files
 .vscode/
+.jsbeautifyrc
+
+# Django-generated files
 __pycache__/
 staticfiles/
+
+# Original spreadsheets; track only compiled CSV's
 **/league_matches
+*.xlsx
+
+# Minified static files
 *.min.js
 *.min.css
-.DS_Store
-.jsbeautifyrc
-*.xlsx
