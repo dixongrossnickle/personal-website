@@ -183,7 +183,7 @@ a {
 }
 /* ====================================================    CONTACT    ======================================================= */
 .footer-container {
-  padding: 2rem 14%;
+  padding: 3rem 14% 4.5rem;
   text-align: center;
 }
 .contact-icon {
@@ -191,9 +191,6 @@ a {
   font-size: 2.5rem;
   color: #474749;
 }
-/* .contact-icon:hover {
-  color: #111111;
-} */
 /* ======================================================    MEDIA QUERIES    ====================================================== */
 @media screen and (min-width: 576px) {
   /* -------------------------------------------   576px   ------------------------------------------- */
@@ -238,7 +235,7 @@ a {
   /* ---------------------- */
   .contact-icon {
     font-size: 3rem;
-    margin: 0 12px 2px;
+    margin: 0 12px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -367,7 +364,7 @@ a {
   /* ---------------------- */
   .contact-icon {
     font-size: 4rem;
-    margin: 0 18px 10px;
+    margin: 0 18px;
   }
 }
 @media screen and (min-width: 1200px) {
