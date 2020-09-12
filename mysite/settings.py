@@ -11,12 +11,12 @@ def get_env_variable(var_name):
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SOCCER_CSV_DIR = os.path.join(BASE_DIR, 'programs/soccer', '')
+CSV_DIR = os.path.join(BASE_DIR, 'programs/football_data', '')
 
 SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
 
 # ============================================================================
-DEBUG = True
+DEBUG = False
 # ============================================================================
 
 if DEBUG == True:
