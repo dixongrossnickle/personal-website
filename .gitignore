@@ -7,6 +7,7 @@
 # Django-generated files
 __pycache__/
 staticfiles/
+*.log
 
 # Original spreadsheets; track only compiled CSV's
 **/league_matches
