@@ -37,19 +37,25 @@ function handleAjaxError(jqXHR, exception) {
 
 // Show/hide collapsible section
 var collapseShown = null;
-function toggleCollapse(iconLink) {
+var hiddenByClick = null;
+function toggleCollapse(iconLink, event) {
     let $tgt = $(`#${iconLink.getAttribute('aria-controls')}`)
-    let id = $tgt[0].id;
+    let collapseID = $tgt[0].id;
     if (!collapseShown) {
         $tgt.collapse('show');
-        collapseShown = id;
-    } else if (collapseShown === id) {
+        collapseShown = collapseID;
+    } else if (collapseShown === collapseID) {
         $tgt.collapse('hide');
         collapseShown = null;
+        if (event.type == 'click') {
+            hiddenByClick = true;
+        } else {
+            hiddenByClick = false;
+        }
     } else {
         $(`#${collapseShown}`).removeClass('show');
         $tgt.addClass('show');
-        collapseShown = id;
+        collapseShown = collapseID;
     }
 }
 
@@ -118,19 +124,30 @@ function fallbackCopyToClipboard(text) {
 
 $(document).ready(function() {
 
-    // Drop shadows on hover and focus
+    // Add drop shadows on mouseover and focus-in
     $('.icon-link').on("mouseover focusin", function() {
         this.classList.add('img-drop-shadow');
     })
 
-    $('.icon-link').on("mouseout focusout", function() {
+    // Remove shadow on focus-out
+    $('.icon-link').on("focusout", function() {
         this.classList.remove('img-drop-shadow');
     })
 
-    // Toggle collapse
+    // Remove shadow on mouseout
+    $('.icon-link').on("mouseout", function() {
+        if (this != document.activeElement || (!collapseShown && hiddenByClick)) {
+            this.classList.remove('img-drop-shadow');
+        }
+    })
+
+    // Remove shadow if user clicks to hide collapse
     $('#tools .icon-link').on("click keydown", function(e) {
         if (isValidClick(e)) {
-            toggleCollapse(this);
+            toggleCollapse(this, e);
+            if (!collapseShown && e.type == 'click') {
+                this.classList.remove('img-drop-shadow');
+            }
         }
     });
 
@@ -140,7 +157,7 @@ $(document).ready(function() {
     // Initialize tooltip
     $('#email-btn-link').tooltip();
 
-    // Copy email address to clipboard on click
+    // Copy email address to clipboard on click; hide tooltip after 2s
     var emailTipTimeout;
     $('#email-btn-link').on("click keydown", function(e) {
         if (isValidClick(e)) {
@@ -152,7 +169,7 @@ $(document).ready(function() {
         }
     });
 
-    // Correct heights of .carousel-inner's
+    // Correct heights of .carousel-inner's to prevent overflow issues
     $(window).on('orientationchange resize', () => {
         $('.carousel-inner').attr('style', 'height: auto;');
     });
