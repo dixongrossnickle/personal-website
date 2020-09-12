@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from programs.apps.football_sim import Team, MatchUp
+from programs.football_sim import Team, MatchUp
 # Import email
 from mysite.settings import DEBUG, EMAIL_HOST_USER
 from django.core.mail import send_mail
@@ -36,8 +36,6 @@ def index(request):
                 message = f"An internal server error occurred during handling of the Football Sim app. The request context was:\n\n{request.POST.get('team1')}\n{request.POST.get('team2')}"
                 send_mail(subject, message, EMAIL_HOST_USER, ['dixon.grossnickle@gmail.com'])
                 return JsonResponse({'status': 'Internal Server Error'}, status=500)
-            else:
-                pass
 
     # Render main template
     else:
