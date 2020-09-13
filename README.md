@@ -4,7 +4,7 @@
 <br/>
 
 # Backstory
-This website has been a full stack learning project that started with the [football match simulator](https://github.com/dixongrossnickle/personal-website/blob/master/programs/football_sim.py). This was one of my first Python programs, and I decided I wanted to build a front end for it and host it online — this led me to Django, which required a brief detour into HTML, CSS, and JavaScript. By the time I published the first version, I had a much better understanding of the entire stack. This past summer, I spent a lot of time learning about Bootstrap and JavaScript, and I decided to redesign the layout and turn the site into a single page that operates asynchronously.<br/><br/>
+This website has been a full stack learning project that started with the [football match simulator](https://github.com/dixongrossnickle/personal-website/blob/master/programs/football_sim/). This was one of my first Python programs, and I decided I wanted to build a front end for it and host it online — this led me to Django, which required a brief detour into HTML, CSS, and JavaScript. By the time I published the first version, I had a much better understanding of the entire stack. This past summer, I spent a lot of time learning about Bootstrap and JavaScript, and I decided to redesign the layout and turn the site into a single page that operates asynchronously.<br/><br/>
 
 ## JavaScript
 The page itself relies heavily on JavaScript. When the *simulate* button is clicked, a jQuery AJAX request is sent to the server, where the simulation runs. Then, the results are appended to the page right before the Bootstrap carousel slides to show the match summary. A number of other site features make use of the jQuery and Bootstrap libraries.<br/>
