@@ -14,8 +14,8 @@
    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-   <script defer src="{% static 'js/leagues.min.js' %}"></script>
    <script defer src="{% static 'js/index.min.js' %}"></script>
+   <script defer src="{% static 'js/leagues.min.js' %}"></script>
    <script defer src="{% static 'js/football.min.js' %}"></script>
    <script defer src="https://kit.fontawesome.com/565e8772bc.js" crossorigin="anonymous"></script>
    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon.png' %}" />
@@ -123,14 +123,14 @@
       <div class="container-fluid header-container">
          <h2>soccer match simulator</h2>
          <p class="subtext">
-            I'm a big soccer fan, so I made this. Simulate a match between any two teams from Europe's top five leagues (based on 2019-20 season results).
+            Simulate a match between any two teams from Europe's top five leagues (based on 2019-20 season results).
          </p>
       </div>
       <div class="container-fluid football-container">
          <div class="football-carousel carousel slide" data-interval="false" data-touch="false">
             <div class="carousel-inner">
                <div class="form-item carousel-item active">
-                  <form class="footballForm" method="GET" action="." data-url="{{ request.build_absolute_uri|safe }}">
+                  <form class="footballForm" method="GET" action="sim/" data-url="{{ request.build_absolute_uri|safe }}">
                      <div class="row">
                         <div class="col-sm">
                            <div class="card select-card top-select-card">
@@ -139,11 +139,11 @@
                               </div>
                               <div class="card-body select-card-body">
                                  <select class="form-control responsive-select" id="leagues1" required>
-                                    <option value="epl" selected>Premier League – England</option>
-                                    <option value="bundesliga">Bundesliga – Germany</option>
-                                    <option value="serie_a">Serie A – Italy</option>
-                                    <option value="la_liga">La Liga – Spain</option>
-                                    <option value="ligue_1">Ligue 1 – France</option>
+                                    <option value="E1" selected>Premier League – England</option>
+                                    <option value="G1">Bundesliga – Germany</option>
+                                    <option value="I1">Serie A – Italy</option>
+                                    <option value="S1">La Liga – Spain</option>
+                                    <option value="F1">Ligue 1 – France</option>
                                  </select>
                                  <select class="form-control responsive-select" id="teams1" required>
                                     <!-- Teams populated by javascript --></select>
@@ -157,11 +157,11 @@
                               </div>
                               <div class="card-body select-card-body">
                                  <select class="form-control responsive-select" id="leagues2" required>
-                                    <option value="epl" selected>Premier League – England</option>
-                                    <option value="bundesliga">Bundesliga – Germany</option>
-                                    <option value="serie_a">Serie A – Italy</option>
-                                    <option value="la_liga">La Liga – Spain</option>
-                                    <option value="ligue_1">Ligue 1 – France</option>
+                                    <option value="E1" selected>Premier League – England</option>
+                                    <option value="G1">Bundesliga – Germany</option>
+                                    <option value="I1">Serie A – Italy</option>
+                                    <option value="S1">La Liga – Spain</option>
+                                    <option value="F1">Ligue 1 – France</option>
                                  </select>
                                  <select class="form-control responsive-select" id="teams2" required>
                                     <!-- Teams populated by javascript --></select>

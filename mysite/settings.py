@@ -11,7 +11,7 @@ def get_env_variable(var_name):
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-CSV_DIR = os.path.join(BASE_DIR, 'programs/football_data', '')
+FOOTBALL_CSV_DIR = os.path.join(BASE_DIR, 'programs/football_sim/football_data', '')
 
 SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
 
@@ -30,8 +30,9 @@ elif DEBUG == False:
 INSTALLED_APPS += [
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
-    #  my apps:
+    # my apps:
     'templates',
+    'home',
     'programs'
 ]
 

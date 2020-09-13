@@ -1,44 +1,69 @@
-from django.shortcuts import render
 from django.http import JsonResponse
-from programs.football_sim import Team, MatchUp
+from .football_sim.team import Team
+from .football_sim.matchup import MatchUp
 # Import email
 from mysite.settings import DEBUG, EMAIL_HOST_USER
 from django.core.mail import send_mail
 
-def index(request):
-    # If AJAX, run app and return JSON
-    if request.is_ajax():
-        try:
-            # Get team names and replace '_'
-            team1_name = request.GET.get('team1').replace('_', ' ')
-            team2_name = request.GET.get('team2').replace('_', ' ')
-            #Create Team objects
-            team1 = Team(team1_name, True)
-            team2 = Team(team2_name, False)
-            # Create matchup
-            matchup = MatchUp(team1, team2)
-            # Sim match
-            matchup.sim()
-            team1_goals = matchup.results['team1']
-            team2_goals = matchup.results['team2']
-            # Matchup.events format: name, minute, event, team name
-            match_events = []
-            for i in sorted(matchup.events, key=int):
-                match_events.append([matchup.events[i][2], str(i)+"'", matchup.events[i][1], matchup.events[i][0]])
-            return JsonResponse({
-                'team1': [team1_name, team1_goals],
-                'team2': [team2_name, team2_goals],
-                'match_events': match_events
-            }, status=200)
-        except:
-            if DEBUG == False:
-                subject = 'Internal Server Error [500]'
-                message = f"An internal server error occurred during handling of the Football Sim app. The request context was:\n\n{request.POST.get('team1')}\n{request.POST.get('team2')}"
-                send_mail(subject, message, EMAIL_HOST_USER, ['dixon.grossnickle@gmail.com'])
-                return JsonResponse({'status': 'Internal Server Error'}, status=500)
+# Sim match and return JSON Response
+def match_sim(request):
+    try:
+        # Get team names
+        home_team_id = request.GET['home']
+        away_team_id = request.GET['away']
+        #Create Team objects
+        HomeTeam = ''
+        AwayTeam = ''
+        HomeTeam = Team(home_team_id, 'home')
+        AwayTeam = Team(away_team_id, 'away')
+        # Create matchup instance & sim
+        Match = MatchUp(HomeTeam, AwayTeam)
+        Match.sim()
+        # Return results
+        return JsonResponse({
+            'result': Match.results,
+            'homeTeam': {
+                'name': HomeTeam.club_name,
+                'startingXI': HomeTeam.starting_XI
+            },
+            'awayTeam': {
+                'name': AwayTeam.club_name,
+                'startingXI': AwayTeam.starting_XI
+            },
+            'matchEvents': Match.events
+        }, status=200)
+    
+    except KeyError:
+        return handle_error('KeyError', request, away_team_id, HomeTeam, AwayTeam)
+    except AttributeError:
+        return handle_error('AttributeError', request, away_team_id, HomeTeam, AwayTeam)
+    except:
+        return handle_error('Other', request, away_team_id, HomeTeam, AwayTeam)
 
-    # Render main template
+
+# Return appropriate error response
+def handle_error(error, request, away_id, HomeTeam, AwayTeam):
+    if error == 'KeyError':
+        submsg1 = ''
+        submsg2 = ''
+        if HomeTeam != '':
+            submsg1 += f'  [FOUND: {HomeTeam.club_name}]'
+        else:
+            try:
+                AwayTeam = Team(away_id, 'away')
+                submsg2 += f'  [FOUND: {AwayTeam.club_name}]'
+            except KeyError:
+                pass
+        message = "\nKEY ERROR — Could not find one or both teams. The URL variables "\
+            +f"given were:\n\nhome:  {request.GET['home']}{submsg1}\n\naway:  {request.GET['away']}{submsg2}\n"\
+            +"\nVisit https://github.com/dixongrossnickle/personal-website and make sure variables "\
+            +"in your url match the values in the README documentation exactly.\n"
     else:
-        response = render(request, 'index.html')
-        response['Strict-Transport-Security'] = 'max-age=15768000; includeSubDomains'
-        return response
+        message = "\nUNKNOWN ERROR — An unknown error occurred during simulation. I've been notified and will fix it soon.\n"
+    if DEBUG == False:
+        subject = 'Simulator – Internal Server Error'
+        send_mail(subject, message, EMAIL_HOST_USER, ['dixon.grossnickle@gmail.com'])
+    return JsonResponse({
+        'status': 'Internal Server Error',
+        'message': message
+    }, status=500)
