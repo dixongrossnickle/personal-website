@@ -5,42 +5,40 @@ function changeLeague(select) {
     let $leagueSelect = $(select)
     let league = $leagueSelect.children('option:selected').val();
     switch (league) {
-        case 'epl':
-            dict = EPL;
-            team1ToSelect = 'Manchester_United';
-            team2ToSelect = 'Manchester_City';
+        case 'E1':
+            dict = england;
+            defaultSelect1 = 'E10';
+            defaultSelect2 = 'E116';
             break;
-        case 'bundesliga':
-            dict = BL;
-            team1ToSelect = 'Bayern';
-            team2ToSelect = 'Dortmund';
+        case 'G1':
+            dict = germany;
+            defaultSelect1 = 'G12';
+            defaultSelect2 = 'G13';
             break;
-        case 'serie_a':
-            dict = SA;
-            team1ToSelect = 'Inter_Milan';
-            team2ToSelect = 'Juventus';
+        case 'I1':
+            dict = italy;
+            defaultSelect1 = 'I18';
+            defaultSelect2 = 'I19';
             break;
-        case 'la_liga':
-            dict = LL;
-            team1ToSelect = 'Real_Madrid';
-            team2ToSelect = 'Barcelona';
+        case 'S1':
+            dict = spain;
+            defaultSelect1 = 'S13';
+            defaultSelect2 = 'S114';
             break;
-        case 'ligue_1':
-            dict = L1;
-            team1ToSelect = 'PSG';
-            team2ToSelect = 'Lyon';
+        case 'F1':
+            dict = france;
+            defaultSelect1 = 'F114';
+            defaultSelect2 = 'F16';
     }
     // Create string of HTML options and append to select
-    var keys = Object.keys(dict);
-    keys.sort();
     var options = '';
-    for (let i = 0; i < keys.length; i++) {
-        options += `<option value='${dict[keys[i]]}'>${keys[i]}</option>`;
+    for (teamID in dict) {
+        options += `<option value='${teamID}'>${dict[teamID]}</option>`;
     }
     let teamNum = $leagueSelect[0].id.charAt(7);
     $(`#teams${teamNum}`).html(options);
     // Toggle selected/disable attributes
-    toggleDisable(league, teamNum, team1ToSelect, team2ToSelect);
+    selectAndDisable(league, teamNum, defaultSelect1, defaultSelect2);
 }
 
 // Toggle selected/disabled on team change
@@ -57,7 +55,7 @@ function changeTeam(select) {
 }
 
 // Toggle selected / disabled attributes when league is changed
-function toggleDisable(league, teamNum, team1ToSelect, team2ToSelect) {
+function selectAndDisable(league, teamNum, team1ToSelect, team2ToSelect) {
     if (teamNum == 1) {
         var oppTeamNum = 2;
         var toSelect = team1ToSelect;
@@ -84,30 +82,32 @@ function toggleDisable(league, teamNum, team1ToSelect, team2ToSelect) {
 }
 
 // Append results from AJAX - match results & events 
-function appendResults(team1, team2, match_events) {
-    $('.team1-name').append(team1[0]);
-    $('.team2-name').append(team2[0]);
-    $('.team1-score').append(team1[1]);
-    $('.team2-score').append(team2[1]);
+function appendResults(results, homeTeam, awayTeam, matchEvents) {
+    $('.team1-name').append(homeTeam.name);
+    $('.team2-name').append(awayTeam.name);
+    $('.team1-score').append(results.homeTeamGoals);
+    $('.team2-score').append(results.awayTeamGoals);
     const $cardBody = $('.results-card-body');
-    let n = 0;
-    for (i in match_events) {
-        switch (match_events[i][2]) {
-            case 'G':
-                event = `<i class='fas fa-futbol'></i>`;
+    let i = 0;
+    for (min in matchEvents) {
+        switch (matchEvents[min].event) {
+            case 'goal':
+                eventHTML = `<i class='fas fa-futbol'></i>`;
                 break;
-            case 'R':
-                event = `<div class='red-card'></div>`;
-        };
-        if (match_events[i][3] == team1[0]) {
-            $cardBody.append(`<div class='row events-row'><div class='col-4 events team1-event-name'>${match_events[i][0]}</div><div class='col text-nowrap events team1-event-min'>${match_events[i][1]}</div><div class='col-1 events team1-event-type'>${event}</div><div class='col-6'></div></div>`);
+            case 'red card':
+                eventHTML = `<div class='red-card'></div>`;
+        }
+        if (matchEvents[min].team == homeTeam.name) {
+            $cardBody.append(`<div class='row events-row'><div class='col-4 events team1-event-name'>${matchEvents[min].player}</div><div class='col text-nowrap events team1-event-min'>${`${min}'`}</div><div class='col-1 events team1-event-type'>${eventHTML}</div><div class='col-6'></div></div>`);
 
-        } else if (match_events[i][3] == team2[0]) {
-            $cardBody.append(`<div class='row events-row'><div class='col-6'></div><div class='col-1 events team2-event-type'>${event}</div><div class='col text-nowrap events team2-event-min'>${match_events[i][1]}</div><div class='col-4 events team2-event-name'>${match_events[i][0]}</div></div>`);
-        };
-        n += 1;
+        } else if (matchEvents[min].team == awayTeam.name) {
+            $cardBody.append(`<div class='row events-row'><div class='col-6'></div><div class='col-1 events team2-event-type'>${eventHTML}</div><div class='col text-nowrap events team2-event-min'>${`${min}'`}</div><div class='col-4 events team2-event-name'>${matchEvents[min].player}</div></div>`);
+        } else {
+            console.log("MISS")
+        }
+        i+=1;
     }
-    if (n === 0) {
+    if (i === 0) {
         $cardBody.addClass('hide-body');
     }
 }
@@ -128,23 +128,23 @@ function changeBtnText() {
     });
 }
 
-// Make AJAX request and append results 
+// Make AJAX request and append results
+const $footballForm = $('.footballForm')
 function ajaxRequest() {
     return new Promise((res, rej) => {
-        let thisURL = $('.footballForm').attr('data-url') || window.location.href;
-        let team1 = $('#teams1').val();
-        let team2 = $('#teams2').val();
+        let thisURL = `${$footballForm.attr('data-url')}${$footballForm.attr('action')}`;
+        let team1Val = $('#teams1').val();
+        let team2Val = $('#teams2').val();
         $.ajax({
                 method: 'GET',
                 url: thisURL,
                 data: {
-                    app: 'match_sim',
-                    team1: team1,
-                    team2: team2
+                    home: team1Val,
+                    away: team2Val
                 }
             })
             .done(response => {
-                appendResults(response.team1, response.team2, response.match_events);
+                appendResults(response.result, response.homeTeam, response.awayTeam, response.matchEvents);
                 res('success');
             })
             .fail((jqXHR, exception) => {

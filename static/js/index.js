@@ -13,6 +13,11 @@ function isValidClick(e) {
 
 // Handle AJAX request error
 function handleAjaxError(jqXHR, exception) {
+    try {
+        console.log(jqXHR.responseJSON.message);
+    } catch {
+        console.log('An unknown server error occurred.')
+    }
     let errorMsg = '';
     if (jqXHR.status == 0) {
         errorMsg = 'Could not connect to server. Please check your network connection.';
