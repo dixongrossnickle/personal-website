@@ -20,7 +20,7 @@ def match_sim(request):
         Match = MatchUp(HomeTeam, AwayTeam)
         Match.sim()
         # Return results
-        return JsonResponse({
+        response = JsonResponse({
             'result': Match.results,
             'homeTeam': {
                 'name': HomeTeam.club_name,
@@ -32,6 +32,8 @@ def match_sim(request):
             },
             'matchEvents': Match.events
         }, status=200)
+        response['Access-Control-Allow-Origin'] = '*'
+        return response
     
     except KeyError:
         return handle_error('KeyError', request, away_team_id, HomeTeam, AwayTeam)
