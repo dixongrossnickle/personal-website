@@ -65,7 +65,9 @@ def handle_error(error, request, away_id, HomeTeam, AwayTeam):
     if DEBUG == False:
         subject = 'Simulator – Internal Server Error'
         send_mail(subject, message, EMAIL_HOST_USER, ['dixon.grossnickle@gmail.com'])
-    return JsonResponse({
+    response =  JsonResponse({
         'status': 'Internal Server Error',
         'message': message
     }, status=500)
+    response['Access-Control-Allow-Origin'] = '*'
+    return response
