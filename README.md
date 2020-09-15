@@ -36,7 +36,7 @@ The simulator can be used via a simple API — Just replace `HomeTeamID` and `Aw
 <br/>
 
 ```
-https://dixongrossnickle.com/sim/run/?home=<HomeTeamID>&away=<AwayteamID>
+https://dixongrossnickle.com/sim/run/?home=<HomeTeamID>&away=<AwayTeamID>
 ```
 
 #### Example: ####
