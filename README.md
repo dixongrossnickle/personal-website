@@ -38,7 +38,7 @@ https://dixongrossnickle.com/sim/run/?home=<HomeTeamID>&away=<AwayteamID>
 ```
 
 #### Example: ####
-`https://dixongrossnickle.com/sim/?home=G12&away=E116`<br/><br/>
+`https://dixongrossnickle.com/sim/run/?home=G12&away=E116`<br/><br/>
 
 ### Response format:
 <br/>
