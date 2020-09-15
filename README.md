@@ -1,19 +1,21 @@
 ***
-## [https://dixongrossnickle.com/sim/](https://dixongrossnickle.com/sim/)
+## [https://dixongrossnickle.com/](https://dixongrossnickle.com/)
 ***
 <br/>
 
 # Backstory
-This website has been a full stack learning project that started with the [football match simulator](https://github.com/dixongrossnickle/personal-website/blob/master/programs/football_sim/). This was one of my first Python programs, and I decided I wanted to build a front end for it and host it online — this led me to Django, which required a brief detour into HTML, CSS, and JavaScript. By the time I published the first version, I had a much better understanding of the entire stack. This past summer, I spent a lot of time learning about Bootstrap and JavaScript, and I decided to redesign the layout and add asynchronous features.<br/><br/>
+This website has been a full stack learning project that started with the [football match simulator](https://github.com/dixongrossnickle/personal-website/blob/master/programs/football_sim/). This was one of my first Python programs, and I decided I wanted to build a front end for it and host it online — this led me to Django, which required a brief detour into HTML, CSS, and JavaScript. By the time I published the first version, I had a much better understanding of the entire stack. This past summer, I spent some of time learning about Bootstrap and JavaScript, and I decided to redesign the layout and add asynchronous features.<br/><br/>
 
 ## JavaScript
 The page itself relies heavily on JavaScript. When the *simulate* button is clicked, a jQuery AJAX request is sent to the server, where the simulation runs. Then, the results are appended to the page right before the Bootstrap carousel slides to show the match summary. A number of other site features make use of the jQuery and Bootstrap libraries.<br/>
 
-Custom JavaScript code can be found under [static/js/](https://github.com/dixongrossnickle/personal-website/blob/master/static/js/)<br/><br/>
+JavaScript code can be found under [static/js/](https://github.com/dixongrossnickle/personal-website/blob/master/static/js/).<br/><br/>
 
 ## Django
-I know that this site could've easily been handled by something light-weight such as Flask; I just wanted to get familiar with Django because I think it's fantastic. Also, the Django stack used here is very light-weight — it only has a few middlewares since there's no database or user authentication.<br/><br/>
-All custom static files are served by [whitenoise](http://whitenoise.evans.io/en/stable/index.html), which is a middleware that compresses files, creates versioned URLs, and sets long-lasting cache headers.<br/><br/><br/>
+I know this site could've easily been handled by something light-weight such as Flask; I just wanted to get familiar with Django because I think it's fantastic. Also, the Django stack used here is very light-weight — it only has a few middlewares since there's no database or user authentication.<br/><br/>
+All custom static files are served by [whitenoise](http://whitenoise.evans.io/en/stable/index.html), which is a middleware that compresses files, creates versioned URLs, and sets appropriate cache headers.<br/>
+
+The Django app is served by [Gunicorn](https://docs.gunicorn.org/en/stable/) with [Nginx](https://nginx.org/en/) as a reverse proxy.<br/><br/><br/>
 
 # Football Simulator
 The football simulator uses [pandas](https://pypi.org/project/pandas/) to read two CSV's: one containing every match from Europe's top 5 leagues (2019-20 season), and another containing the all players' data from the FIFA 20 video game. It finds the mean and standard deviation of each team's goals for & goals conceded, depending on home or away matches. Then, it creates Gaussian distributions for each, and averages the two to determine the goals scored by each team.<br/><br/>
@@ -25,10 +27,10 @@ goals_scored_in_match = [ random(avg_goals_scored) + random(avg_goals_conceded) 
 ```
 <br/>
 
-Then, a player is randomly selected for each event using the weights of each player's attribute (`finishing` for goals and `aggression` for red cards).<br/><br/><br/>
+Then, a player is randomly selected for each event using the weights of each player's relevant attribute (`finishing` for goals and `aggression` for red cards).<br/><br/><br/>
 
 ## Simulator API
-The simulator can be used via a simple API — Just replace `HomeTeamID` and `AwayTeamID` with the ID's that correspond with the team names you wish to simulate. The ID/name pairs can be found below.<br/><br/>
+The simulator can be used via a simple API — Just replace `HomeTeamID` and `AwayTeamID` with the ID's that correspond with the team names you want to simulate a match between. ID–name pairs can be found [below](#api-variables).<br/><br/>
 
 ### Request format:
 <br/>
@@ -104,7 +106,7 @@ https://dixongrossnickle.com/sim/run/?home=<HomeTeamID>&away=<AwayteamID>
 ```
 <br/>
 
-`Note:` events may be returned in any order.<br/><br/><br/>
+Note: events may be returned in any order.<br/><br/><br/>
 
 # API variables
 ### ID: Team Name
