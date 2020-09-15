@@ -13,40 +13,58 @@ def sim_index(request):
 
 # Sim match and return JSON Response
 def match_sim_json(request):
-    try:
-        # Get team names
-        home_team_id = request.GET['home']
-        away_team_id = request.GET['away']
-        #Create Team objects
-        HomeTeam = ''
-        AwayTeam = ''
-        HomeTeam = Team(home_team_id, 'home')
-        AwayTeam = Team(away_team_id, 'away')
-        # Create matchup instance & sim
-        Match = MatchUp(HomeTeam, AwayTeam)
-        Match.sim()
-        # Return results
-        response = JsonResponse({
-            'result': Match.results,
-            'homeTeam': {
-                'name': HomeTeam.club_name,
-                'startingXI': HomeTeam.starting_XI
-            },
-            'awayTeam': {
-                'name': AwayTeam.club_name,
-                'startingXI': AwayTeam.starting_XI
-            },
-            'matchEvents': Match.events
-        }, status=200)
-        response['Access-Control-Allow-Origin'] = '*'
-        return response
-    
-    except KeyError:
-        return handle_error('KeyError', request, away_team_id, HomeTeam, AwayTeam)
-    except AttributeError:
-        return handle_error('AttributeError', request, away_team_id, HomeTeam, AwayTeam)
-    except:
-        return handle_error('Other', request, away_team_id, HomeTeam, AwayTeam)
+    is_valid = validate_request(request)
+    if validate_request(request) != True:
+        return is_valid
+    else:
+        try:
+            # Get team names
+            home_team_id = request.GET['home']
+            away_team_id = request.GET['away']
+            #Create Team objects
+            HomeTeam = ''
+            AwayTeam = ''
+            HomeTeam = Team(home_team_id, 'home')
+            AwayTeam = Team(away_team_id, 'away')
+            # Create matchup instance & sim
+            Match = MatchUp(HomeTeam, AwayTeam)
+            Match.sim()
+            # Return results
+            response = JsonResponse({
+                'result': Match.results,
+                'homeTeam': {
+                    'name': HomeTeam.club_name,
+                    'startingXI': HomeTeam.starting_XI
+                },
+                'awayTeam': {
+                    'name': AwayTeam.club_name,
+                    'startingXI': AwayTeam.starting_XI
+                },
+                'matchEvents': Match.events
+            }, status=200)
+            response['Access-Control-Allow-Origin'] = '*'
+            return response
+        
+        except KeyError:
+            return handle_error('KeyError', request, away_team_id, HomeTeam, AwayTeam)
+        except:
+            return handle_error('Other', request, away_team_id, HomeTeam, AwayTeam)
+
+
+def validate_request(request):
+    num_vars = len(request.GET)
+    if num_vars == 2:
+        return True
+    elif num_vars > 2:
+        message = "Match sim only takes two variables: 'home' and 'away'. Visit https://github.com/dixongrossnickle/personal-website/ for API documentation."
+    elif num_vars < 2:
+        message = "Match sim requires two variables: 'home' and 'away'. Visit https://github.com/dixongrossnickle/personal-website/ for API documentation."
+    response =  JsonResponse({
+            'status': 'Internal Server Error',
+            'message': message
+        }, status=500)
+    response['Access-Control-Allow-Origin'] = '*'
+    return response
 
 
 # Return appropriate error response
