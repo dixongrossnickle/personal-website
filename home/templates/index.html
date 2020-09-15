@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>home | dixon grossnickle</title>
+{% endblock %}
+
+{% block content %}
+   <!-- Title Section -->
+   <section id="title">
+      <div class="container-fluid header-container">
+         <h1>hello</h1>
+         <p class="subtext title-description">
+            I'm a senior at UT Austin majoring in MIS. I built this website to learn about full stack web
+            development. Click the icons for more information.
+         </p>
+      </div>
+   </section>
+   <section id="tools">
+      <div class="container-fluid icons-container">
+         <div class="row">
+            <div class="col img-col">
+               <a class='icon-link d-block' role="button" tabindex="0" aria-expanded="false" aria-controls="descrip1">
+                  <img class="img-fluid" src="{% static 'images/icons/Python-logo-notext.svg' %}" alt="Python icon">
+               </a>
+            </div>
+            <div class="col-4 img-col django-col d-flex">
+               <a class='icon-link d-block align-self-center' role="button" tabindex="0" aria-expanded="false" aria-controls="descrip2">
+                  <img class="img-fluid" src="{% static 'images/icons/django-logo.svg' %}" alt="Django icon">
+               </a>
+            </div>
+            <div class="col img-col">
+               <a class='icon-link d-block' role="button" tabindex="0" aria-expanded="false" aria-controls="descrip3">
+                  <img class="img-fluid" src="{% static 'images/icons/javascript-logo.svg' %}" alt="JavaScript icon">
+               </a>
+            </div>
+            <div class="col img-col">
+               <a class='icon-link d-block' role="button" tabindex="0" aria-expanded="false" aria-controls="descrip4">
+                  <img class="img-fluid" src="{% static 'images/icons/bootstrap-logo.svg' %}" alt="Bootstrap icon">
+               </a>
+            </div>
+         </div>
+      </div>
+      <div class="container-fluid collapse-container">
+         <div class="collapse" id="descrip1">
+            <div class="card card-body tools-card">
+               <h4 class="mb-3">Python</h4>
+               <p class="descrip">Python is the reason I made this site. It was the first language I learned, and I wanted to build an interface for the <a href="{% url 'sim_home' %}">soccer simulator</a> I wrote. It uses Python to analyze season statistics and FIFA ratings, and then chooses an outcome based on probability distributions.</p>
+            </div>
+         </div>
+         <div class="collapse" id="descrip2">
+            <div class="card card-body tools-card">
+               <h4 class="mb-3">Django</h4>
+               <p class="descrip">Django is the web framework that runs the site. I chose to learn Django because not only is it written in Python, it's also very powerful. This site uses only a fraction of Django's functionality — I just liked it a lot and wanted to get familiar with it.</p>
+            </div>
+         </div>
+         <div class="collapse" id="descrip3">
+            <div class="card card-body tools-card">
+               <h4 class="mb-3">JavaScript</h4>
+               <p class="descrip">Building this website was my first time using JavaScript. At first, I just needed a few functions for the site to work. But now, it practically runs on JavaScript; the simulator uses it to send requests to the server, receive the results as JSON, and update the page.</p>
+            </div>
+         </div>
+         <div class="collapse" id="descrip4">
+            <div class="card card-body tools-card">
+               <h4 class="mb-3">HTML/CSS</h4>
+               <p class="descrip">This was also my first introduction to HTML and CSS, but working with Bootstrap taught me a lot. It was much simpler to create a responsive layout than I had imagined, and I was able to use Bootstrap's JavaScript events for some nice effects.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+{% endblock %}

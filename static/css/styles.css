@@ -2,6 +2,14 @@ body {
   font-family: "Oswald", sans-serif;
   background-color: #fbfbfb;
   color: #3F3F44;
+  min-height: 100%;
+}
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+.content-wrap {
+  padding-bottom: 184px;
 }
 .header-container {
   padding: 3rem 7% 0;
@@ -46,11 +54,11 @@ a {
 }
 .icon-link {
   outline: none;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 .img-drop-shadow {
-  transform: translateZ(0);
   filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, .6));
-  -webkit-transform: translateZ(0);
   -webkit-filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, .6));
 }
 /* =====================================================   NAVBAR   ======================================================== */
@@ -68,18 +76,15 @@ a {
 }
 /* ====================================================   TITLE   ==================================================== */
 #title .header-container {
-  padding-bottom: 3.5rem;
+  padding-bottom: 2rem;
   padding-top: 3.5rem;
 }
 /* =================================================   TOOLS & TECH   ================================================== */
-#tools {
-  padding-bottom: 1rem;
-}
 .icons-container {
-  padding: 2rem 0;
+  padding: 2rem 10%;
 }
 .collapse-container {
-  padding: 0 10%;
+  padding: 0 10% 5rem;
 }
 /* ======================================================   MATCH SIM   ================================================= */
 .football-container {
@@ -182,6 +187,11 @@ a {
   padding-right: 5px;
 }
 /* ====================================================    CONTACT    ======================================================= */
+#contact {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 .footer-container {
   padding: 3rem 14% 4.5rem;
   text-align: center;
@@ -209,7 +219,8 @@ a {
   }
   /* ---------------------- */
   .icons-container {
-    padding: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
   }
   .img-col {
     padding: 0 1.5rem;
@@ -245,7 +256,6 @@ a {
   }
   #title .header-container {
     padding-top: 5rem;
-    padding-bottom: 5rem;
   }
   .subtext {
     font-size: 1.5rem;
@@ -258,14 +268,11 @@ a {
     font-size: 1.7rem;
   }
   /* ---------------------- */
-  #tools {
-    padding-bottom: 3rem;
+  .icons-container {
+    padding: 3rem 15%;
   }
   .descrip {
     font-size: 1.2rem;
-  }
-  .icons-container {
-    padding: 2.5rem 3rem 3rem;
   }
   .img-col {
     padding: 0 2.2rem;
@@ -274,7 +281,7 @@ a {
     padding: 0 2.5rem;
   }
   .collapse-container {
-    padding: 0 16%;
+    padding: 0 16% 8rem;
   }
   /* ---------------------- */
   .form-item {
@@ -310,7 +317,6 @@ a {
   }
   #title .header-container {
     padding-top: 6rem;
-    padding-bottom: 6rem;
   }
   /* ---------------------- */
   .navbar {
@@ -328,14 +334,14 @@ a {
     font-size: 1.3rem;
   }
   .icons-container {
-    padding: 3.5rem 7%;
+    padding: 3rem 18%;
   }
   .img-col,
   .django-col {
     padding: 0 3rem;
   }
   .collapse-container {
-    padding: 0 18%;
+    padding: 0 18% 12rem;
   }
   /* ---------------------- */
   .form-item {
@@ -381,18 +387,12 @@ a {
   .header-container {
     padding: 5.5rem 20% 0;
   }
-  #title .header-container {
-    padding-bottom: 7rem;
-  }
   .button-div {
     padding-top: 4rem;
   }
   /* ---------------------- */
-  #tools {
-    padding-bottom: 4rem;
-  }
   .icons-container {
-    padding-bottom: 4rem;
+    padding: 3rem 22%;
   }
   .img-col {
     padding: 0 3.2rem;
@@ -401,7 +401,7 @@ a {
     padding: 0 3.5rem;
   }
   .collapse-container {
-    padding: 0 24%;
+    padding: 0 24% 14rem;
   }
   /* ---------------------- */
   .form-item {
@@ -428,10 +428,5 @@ a {
   }
   .btn-lg {
     font-size: 1.35rem;
-  }
-  #toTranslate,
-  #translation {
-    height: 230px;
-    font-size: 1.6rem;
   }
 }

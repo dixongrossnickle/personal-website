@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.http import JsonResponse
 from .football_sim.team import Team
 from .football_sim.matchup import MatchUp
@@ -5,8 +6,13 @@ from .football_sim.matchup import MatchUp
 from mysite.settings import DEBUG, EMAIL_HOST_USER
 from django.core.mail import send_mail
 
+def sim_index(request):
+    response = render(request, 'simulator.html')
+    response['Strict-Transport-Security'] = 'max-age=15768000; includeSubDomains'
+    return response
+
 # Sim match and return JSON Response
-def match_sim(request):
+def match_sim_json(request):
     try:
         # Get team names
         home_team_id = request.GET['home']
