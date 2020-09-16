@@ -19,16 +19,18 @@ class Team:
     # Create new dataframe for specific team; Drop subs, reserves, and GKs
     # Add position-based multipliers – need more disparity in scoring probabilities
     def populate_roster(self):
-        df = FIFA_DF.loc[FIFA_DF['club_id'] == self.club_id, ['short_name', 'team_position', 'attacking_finishing', 'mentality_aggression']]
+        df = FIFA_DF.loc[FIFA_DF['club_id'] == self.club_id, ['short_name', 'team_position', 'nationality', 'overall', 'attacking_finishing', 'mentality_aggression']]
         df = df[~df['team_position'].isin(['SUB','RES'])].reset_index(drop=True)
         for i in range(len(df)):
-            player = Player(df.iloc[i,0], self.club_name, df.iloc[i,1], df.iloc[i,2], df.iloc[i,3])
+            player = Player(df.iloc[i,0], self.club_name, df.iloc[i,1], df.iloc[i,2], df.iloc[i,3], df.iloc[i,4], df.iloc[i,5])
             if player.position in ('ST','RS','LS','CF','LF','RF'):
-                player.finishing *= 3
+                player.goal_prob = (player.goal_prob*2.5) + player.overall
+                print(player.goal_prob)
             elif player.position in ('RW','LW','RM','LM','CAM'):
-                player.finishing *= 2
+                player.goal_prob = (player.goal_prob*1.8) + player.overall
             elif player.position in ('CB','RCB','LCB','LB','RB','CDM','RDM','LDM'):
-                player.aggression *= 3
+                player.goal_prob += player.overall
+                player.foul_prob *= 3
             self.starting_XI[i+1] = player.get_attributes()
             # Roster (used in event assignment/probabilities) should not have GK - they get picked too often
             if player.position != 'GK':
@@ -38,8 +40,8 @@ class Team:
     # --- Append finishing / aggression ratings to probabilities lists (used to assign match events)
     def append_probs(self):
         for player in self.roster:
-            self.team_probs['scoring_probs'].append(player.finishing)
-            self.team_probs['foul_probs'].append(player.aggression)
+            self.team_probs['scoring_probs'].append(player.goal_prob)
+            self.team_probs['foul_probs'].append(player.foul_prob)
 
 
     # --- Calculate means and SD's of goals for & against

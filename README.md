@@ -18,7 +18,7 @@ All custom static files are served by [whitenoise](http://whitenoise.evans.io/en
 The Django app is served by [Gunicorn](https://docs.gunicorn.org/en/stable/) with [Nginx](https://nginx.org/en/) as a reverse proxy.<br/><br/><br/>
 
 # Football Simulator
-The football simulator uses [pandas](https://pypi.org/project/pandas/) to read two CSV's: one containing every match from Europe's top 5 leagues (2019-20 season), and another containing the all players' data from the FIFA 20 video game. It finds the mean and standard deviation of each team's goals for & goals conceded, depending on home or away matches. Then, it creates Gaussian distributions for each, and averages the two to determine the goals scored by each team.<br/><br/>
+The football simulator uses [pandas](https://pypi.org/project/pandas/) to read two CSV's: one containing every match from Europe's top 5 leagues (2019-20 season), and another containing the all players' ratings from the FIFA 20 video game. It finds the mean and standard deviation of each team's goals for & goals conceded, depending on home or away matches. Then, it creates Gaussian distributions for each, and averages the two to determine the goals scored by each team.<br/><br/>
 
 Pseudo-code:<br/>
 
@@ -30,7 +30,7 @@ goals_scored_in_match = [ random(avg_goals_scored) + random(avg_goals_conceded) 
 Then, a player is randomly selected for each event using the weights of each player's relevant attribute (`finishing` for goals and `aggression` for red cards).<br/><br/><br/>
 
 ## Simulator API
-The simulator can be used via a simple API — Just replace `HomeTeamID` and `AwayTeamID` with the ID's that correspond with the team names you want to simulate a match between. ID–name pairs can be found [below](#api-variables).<br/><br/>
+The simulator can be used via a web API — Just replace `HomeTeamID` and `AwayTeamID` with the corresponding team ID's. ID–name pairs can be found [below](#api-variables).<br/><br/>
 
 ### Request format:
 <br/>
@@ -59,7 +59,9 @@ https://dixongrossnickle.com/sim/run/?home=<HomeTeamID>&away=<AwayTeamID>
                 name: 'R. Lewandowski',
                 clubName: 'Bayern',
                 position: 'ST',
-                finishing: 264,
+                nationality: 'Poland',
+                overall: 89,
+                finishing: 88,
                 aggression: 81
             },
             [2–11]: { ...
@@ -73,7 +75,9 @@ https://dixongrossnickle.com/sim/run/?home=<HomeTeamID>&away=<AwayTeamID>
                 name: 'H. Kane',
                 clubName: 'Tottenham',
                 position: 'ST',
-                finishing: 282,
+                nationality: 'England',
+                overall: 89,
+                finishing: 94,
                 aggression: 78
             },
             [2–11]: { ...
@@ -98,8 +102,8 @@ https://dixongrossnickle.com/sim/run/?home=<HomeTeamID>&away=<AwayTeamID>
         },
         68: {
             event: 'red card',
-            team: 'Bayern',
-            player: 'J. Boateng'
+            team: 'Tottenham',
+            player: 'T. Ndombele'
         }
     }
 }
