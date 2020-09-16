@@ -10,9 +10,11 @@ staticfiles/
 *.log
 
 # Original spreadsheets; track only compiled CSV's
-**/league_matches
 *.xlsx
 
 # Minified static files
 *.min.js
 *.min.css
+
+# Script for manipulating original excel files
+programs/tests.py
