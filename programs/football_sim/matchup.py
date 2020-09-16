@@ -17,9 +17,10 @@ class MatchUp:
         events_list.append(home_team_goals) #[0]
         events_list.append(away_team_goals) #[1]
         # Weighted selection for red cards (prob's remain the same each time) -- this is a rough estimation arrived at through testing
-        red_cards = rnd.choices((0,1), weights=[0.97, 0.03], k=2)
-        events_list.append(red_cards[0]) #[2]
-        events_list.append(red_cards[1]) #[3]
+        home_red_cards = rnd.choices((0,1), weights=[0.97, 0.03], k=1)[0]
+        away_red_cards = rnd.choices((0,1), weights=[0.97, 0.03], k=1)[0]
+        events_list.append(home_red_cards) #[2]
+        events_list.append(away_red_cards) #[3]
         # Set neg. number to 0 (may occur due to avg. of goals scored + goals against)
         for i in range(4):
             if events_list[i] < 0:
