@@ -28,7 +28,6 @@ class Team:
             elif player.position in ('RW','LW','RM','LM','CAM'):
                 player.goal_prob = (player.goal_prob*2) + player.overall
             elif player.position in ('CB','RCB','LCB','LB','RB','CDM','RDM','LDM'):
-                player.goal_prob = (player.goal_prob*0.6) + player.overall
                 player.foul_prob *= 3
             self.starting_XI[i+1] = player.get_attributes()
             # Roster (used in event assignment/probabilities) should not have GK - they get picked too often
