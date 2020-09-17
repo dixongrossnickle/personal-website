@@ -24,11 +24,11 @@ class Team:
         for i in range(len(df)):
             player = Player(df.iloc[i,0], self.club_name, df.iloc[i,1], df.iloc[i,2], df.iloc[i,3], df.iloc[i,4], df.iloc[i,5])
             if player.position in ('ST','RS','LS','CF','LF','RF'):
-                player.goal_prob = (player.goal_prob*2.5) + player.overall
+                player.goal_prob = (player.goal_prob*2.8) + player.overall
             elif player.position in ('RW','LW','RM','LM','CAM'):
-                player.goal_prob = (player.goal_prob*1.8) + player.overall
+                player.goal_prob = (player.goal_prob*2) + player.overall
             elif player.position in ('CB','RCB','LCB','LB','RB','CDM','RDM','LDM'):
-                player.goal_prob += player.overall
+                player.goal_prob = (player.goal_prob*0.6) + player.overall
                 player.foul_prob *= 3
             self.starting_XI[i+1] = player.get_attributes()
             # Roster (used in event assignment/probabilities) should not have GK - they get picked too often
