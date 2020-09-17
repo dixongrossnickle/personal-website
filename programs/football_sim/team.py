@@ -25,7 +25,6 @@ class Team:
             player = Player(df.iloc[i,0], self.club_name, df.iloc[i,1], df.iloc[i,2], df.iloc[i,3], df.iloc[i,4], df.iloc[i,5])
             if player.position in ('ST','RS','LS','CF','LF','RF'):
                 player.goal_prob = (player.goal_prob*2.5) + player.overall
-                print(player.goal_prob)
             elif player.position in ('RW','LW','RM','LM','CAM'):
                 player.goal_prob = (player.goal_prob*1.8) + player.overall
             elif player.position in ('CB','RCB','LCB','LB','RB','CDM','RDM','LDM'):

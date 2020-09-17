@@ -102,8 +102,6 @@ function appendResults(results, homeTeam, awayTeam, matchEvents) {
 
         } else if (matchEvents[min].team == awayTeam.name) {
             $cardBody.append(`<div class='row events-row'><div class='col-6'></div><div class='col-1 events team2-event-type'>${eventHTML}</div><div class='col text-nowrap events team2-event-min'>${`${min}'`}</div><div class='col-4 events team2-event-name'>${matchEvents[min].player}</div></div>`);
-        } else {
-            console.log("MISS")
         }
         i+=1;
     }
