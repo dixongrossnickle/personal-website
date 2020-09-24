@@ -21,17 +21,12 @@ h2 {
 }
 h4 {
   font-weight: 500;
-  margin: 0;
 }
 h5 {
   font-weight: 400;
-  margin: 0;
 }
 h2 {
   font-size: 1.8rem;
-}
-.card-header {
-  text-align: center;
 }
 .button-div {
   padding-top: 3rem;
@@ -62,16 +57,12 @@ a {
   -webkit-filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, .6));
 }
 /* =====================================================   NAVBAR   ======================================================== */
-.navbar-container {
-  padding: 0;
-}
 .navbar {
   padding: 20px 4% 10px 7%;
 }
 .navbar-brand {
   font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: 0;
   color: #3F3F44 !important;
 }
 /* ====================================================   TITLE   ==================================================== */
@@ -79,17 +70,16 @@ a {
   padding-bottom: 2rem;
   padding-top: 3.5rem;
 }
-/* =================================================   TOOLS & TECH   ================================================== */
+/* ===================================================   ICONS   ==================================================== */
 .icons-container {
   padding: 2rem 10%;
 }
 .collapse-container {
   padding: 0 10% 5rem;
 }
-/* ======================================================   MATCH SIM   ================================================= */
+/* ====================================================   MATCH SIM   ================================================= */
 .football-container {
   color: #3F3F44;
-  padding: 0;
 }
 .form-item {
   padding: 1.5rem 5% 4.5rem;
@@ -113,9 +103,6 @@ a {
 .result-item {
   padding: 2.2rem 4% 5rem;
 }
-.results-card-header {
-  text-align: left;
-}
 .results-card-body {
   background-color: #f1f0f0;
   padding: .4rem 1.25rem 1rem;
@@ -136,19 +123,8 @@ a {
 .team2-name-col {
   padding: 0 3% 0 6%;
 }
-.goals1-col {
-  text-align: right;
-  padding: 0;
-}
-.goals2-col {
-  padding: 0;
-}
 .dash-col {
-  text-align: center;
   padding: 0 3%;
-}
-.team2-name {
-  text-align: right;
 }
 /* --------------------------  Events  ------------------------------ */
 .red-card {
@@ -163,27 +139,18 @@ a {
   line-height: 1.2;
 }
 .events-row {
-  display: flex;
-  align-items: center;
   padding-top: .8rem;
 }
 .team1-event-min {
-  text-align: right;
   padding: 0 2px 0 0;
 }
 .team2-event-min {
   padding: 0 0 0 2px;
 }
-.team1-event-type,
-.team2-event-type {
-  text-align: center;
-  padding: 0;
-}
 .team1-event-name {
   padding-left: 5px;
 }
 .team2-event-name {
-  text-align: right;
   padding-right: 5px;
 }
 /* ====================================================    CONTACT    ======================================================= */

@@ -98,12 +98,12 @@ function appendResults(results, homeTeam, awayTeam, matchEvents) {
                 eventHTML = `<div class='red-card'></div>`;
         }
         if (matchEvents[min].team == homeTeam.name) {
-            $cardBody.append(`<div class='row events-row'><div class='col-4 events team1-event-name'>${matchEvents[min].player}</div><div class='col text-nowrap events team1-event-min'>${`${min}'`}</div><div class='col-1 events team1-event-type'>${eventHTML}</div><div class='col-6'></div></div>`);
+            $cardBody.append(`<div class='row events-row d-flex align-items-center'><div class='col-4 events team1-event-name'>${matchEvents[min].player}</div><div class='col text-nowrap events team1-event-min text-right'>${`${min}'`}</div><div class='col-1 events team1-event-type p-0 text-center'>${eventHTML}</div><div class='col-6'></div></div>`);
 
         } else if (matchEvents[min].team == awayTeam.name) {
-            $cardBody.append(`<div class='row events-row'><div class='col-6'></div><div class='col-1 events team2-event-type'>${eventHTML}</div><div class='col text-nowrap events team2-event-min'>${`${min}'`}</div><div class='col-4 events team2-event-name'>${matchEvents[min].player}</div></div>`);
+            $cardBody.append(`<div class='row events-row d-flex align-items-center'><div class='col-6'></div><div class='col-1 events team2-event-type p-0 text-center'>${eventHTML}</div><div class='col text-nowrap events team2-event-min'>${`${min}'`}</div><div class='col-4 events team2-event-name text-right'>${matchEvents[min].player}</div></div>`);
         }
-        i+=1;
+        i += 1;
     }
     if (i === 0) {
         $cardBody.addClass('hide-body');
@@ -128,6 +128,7 @@ function changeBtnText() {
 
 // Make AJAX request and append results
 const $footballForm = $('.footballForm')
+
 function ajaxRequest() {
     return new Promise((res, rej) => {
         let thisURL = `${$footballForm.attr('data-url')}${$footballForm.attr('action')}`;
