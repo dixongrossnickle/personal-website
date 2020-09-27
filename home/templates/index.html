@@ -3,19 +3,24 @@
 {% block title %}
 <title>home | dixon grossnickle</title>
 {% endblock %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/home.min.css' %}" />
+{% endblock %}
 
 {% block content %}
-   <!-- Title Section -->
+<div class="col-md-10 col-lg-8">
    <section id="title">
-      <div class="container-fluid header-container">
+      <div class="container-fluid pb-4 pb-lg-5">
          <h1>hello</h1>
-         <p class="subtext title-description">
+         <p class="subtext">
             I'm a senior at UT Austin majoring in MIS. I built this website to learn about full stack web
             development. Click the icons for more information.
          </p>
       </div>
    </section>
-   <section id="tools">
+</div>
+<div class="col-md-9 col-lg-7">
+   <section id="skills">
       <div class="container-fluid icons-container">
          <div class="row">
             <div class="col img-col">
@@ -23,7 +28,7 @@
                   <img class="img-fluid" src="{% static 'images/icons/Python-logo-notext.svg' %}" alt="Python icon">
                </a>
             </div>
-            <div class="col-4 img-col django-col d-flex">
+            <div class="col-4 django-col d-flex">
                <a class='icon-link d-block align-self-center' role="button" tabindex="0" aria-expanded="false" aria-controls="descrip2">
                   <img class="img-fluid" src="{% static 'images/icons/django-logo.svg' %}" alt="Django icon">
                </a>
@@ -61,11 +66,12 @@
          </div>
          <div class="collapse" id="descrip4">
             <div class="card card-body tools-card">
-               <h4 class="mb-3">HTML/CSS</h4>
+               <h4 class="mb-3">Bootstrap</h4>
                <p class="descrip">This was also my first introduction to HTML and CSS, but working with Bootstrap taught me a lot. It was much simpler to create a responsive layout than I had imagined, and I was able to use Bootstrap's JavaScript events for some nice effects.</p>
             </div>
          </div>
       </div>
    </section>
+</div>
 
 {% endblock %}

@@ -1,0 +1,54 @@
+/* -----------------  Styles only relevant to index.html  ----------------- */
+h4 {
+  font-weight: 500;
+}
+.icons-container {
+  padding: 0 10% 2rem;
+}
+.img-col {
+  padding: 10px 15px;
+}
+.django-col {
+  padding: 0;
+  padding: 10px;
+}
+.collapse-container {
+  padding: 0 10%;
+}
+/* ------------------------   Media Queries    ------------------------ */
+@media screen and (min-width: 576px) {
+  .img-col {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  .django-col {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .descrip {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (min-width: 960px) {
+  .descrip {
+    font-size: 1.3rem;
+  }
+  .icons-container {
+    padding: 0 5% 3rem;
+  }
+  .content-wrap {
+    padding-bottom: 250px;
+  } 
+}
+@media screen and (min-width: 1200px) {
+  .img-col {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .django-col {
+    padding-right: 1.4rem;
+    padding-left: 1.4rem;
+  }
+}

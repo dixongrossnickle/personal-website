@@ -1,3 +1,4 @@
+/* ------------------------------------   General Styles   ------------------------------------ */
 body {
   font-family: "Oswald", sans-serif;
   background-color: #fbfbfb;
@@ -5,28 +6,15 @@ body {
   min-height: 100%;
 }
 .page-container {
-  position: relative;
   min-height: 100vh;
 }
 .content-wrap {
-  padding-bottom: 184px;
-}
-.header-container {
-  padding: 3rem 7% 0;
+  padding: 4rem 0 160px 0;
 }
 h1,
 h2 {
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
-}
-h4 {
-  font-weight: 500;
-}
-h5 {
-  font-weight: 400;
-}
-h2 {
-  font-size: 1.8rem;
 }
 .button-div {
   padding-top: 3rem;
@@ -40,7 +28,7 @@ noscript p {
 a {
   white-space: nowrap;
 }
-/* =============================================   FOCUSABLE ELEMENTS   =============================================== */
+/* ------------------------------------   Focusable Elements   ------------------------------------ */
 .form-control:focus,
 .nav-link:focus {
   border-color: #ff0000;
@@ -56,7 +44,7 @@ a {
   filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, .6));
   -webkit-filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, .6));
 }
-/* =====================================================   NAVBAR   ======================================================== */
+/* ------------------------------------    Navbar   ------------------------------------ */
 .navbar {
   padding: 20px 4% 10px 7%;
 }
@@ -65,227 +53,55 @@ a {
   font-weight: 700;
   color: #3F3F44 !important;
 }
-/* ====================================================   TITLE   ==================================================== */
-#title .header-container {
-  padding-bottom: 2rem;
-  padding-top: 3.5rem;
-}
-/* ===================================================   ICONS   ==================================================== */
-.icons-container {
-  padding: 2rem 10%;
-}
-.collapse-container {
-  padding: 0 10% 5rem;
-}
-/* ====================================================   MATCH SIM   ================================================= */
-.football-container {
-  color: #3F3F44;
-}
-.form-item {
-  padding: 1.5rem 5% 4.5rem;
-}
-.select-card-header, .results-card-header {
-  background-color: #474749;
-  color: #fbfbfb;
-}
-.select-card-body {
-  background-color: #eeebeb;
-  padding: 1rem 1.25rem;
-}
-.top-select-card {
-  margin-bottom: 10px;
-}
-#teams1,
-#teams2 {
-  margin-top: 10px;
-}
-/* -------------------------  Results  ---------------------------- */
-.result-item {
-  padding: 2.2rem 4% 5rem;
-}
-.results-card-body {
-  background-color: #f1f0f0;
-  padding: .4rem 1.25rem 1rem;
-}
-.hide-body {
-  padding: 0 !important;
-}
-.score-row {
-  align-items: center;
-}
-.score {
-  display: inline-block;
-  font-size: 2.5rem;
-}
-.team1-name-col {
-  padding: 0 6% 0 3%;
-}
-.team2-name-col {
-  padding: 0 3% 0 6%;
-}
-.dash-col {
-  padding: 0 3%;
-}
-/* --------------------------  Events  ------------------------------ */
-.red-card {
-  display: inline-block;
-  background-color: red;
-  width: 11px;
-  height: 16px;
-  border-radius: 2px;
-}
-.events {
-  color: #3F3F44;
-  line-height: 1.2;
-}
-.events-row {
-  padding-top: .8rem;
-}
-.team1-event-min {
-  padding: 0 2px 0 0;
-}
-.team2-event-min {
-  padding: 0 0 0 2px;
-}
-.team1-event-name {
-  padding-left: 5px;
-}
-.team2-event-name {
-  padding-right: 5px;
-}
-/* ====================================================    CONTACT    ======================================================= */
+/* ------------------------------    Contact    ------------------------------ */
 #contact {
-  position: absolute;
   bottom: 0;
-  width: 100%;
 }
 .footer-container {
   padding: 3rem 14% 4.5rem;
-  text-align: center;
 }
 .contact-icon {
   margin: 0 10px;
   font-size: 2.5rem;
   color: #474749;
 }
-/* ======================================================    MEDIA QUERIES    ====================================================== */
+/* -------------------------   Media Queries    ------------------------- */
 @media screen and (min-width: 576px) {
-  /* -------------------------------------------   576px   ------------------------------------------- */
-  h2 {
-    font-size: 2.25rem;
-  }
-  h5 {
-    font-size: 1.5rem;
-  }
   .subtext {
     font-size: 1.3rem;
   }
-  /* ---------------------- */
   .navbar-brand {
     font-size: 1.4rem;
   }
-  /* ---------------------- */
-  .icons-container {
-    padding-bottom: 2.5rem;
-    padding-bottom: 2.5rem;
-  }
-  .img-col {
-    padding: 0 1.5rem;
-  }
-  /* ---------------------- */
-  #teams1,
-  #teams2 {
-    margin-top: 15px;
-  }
-  .select-card-header {
-    padding: .75rem 1.25rem;
-  }
-  .responsive-select {
-    height: calc(1.5em + 1rem + 2px);
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: .3rem;
-  }
-  .result-item {
-    padding: 3rem 10% 5.5rem;
-  }
-  /* ---------------------- */
   .contact-icon {
     font-size: 3rem;
     margin: 0 12px;
   }
 }
 @media screen and (min-width: 768px) {
-  /* -------------------------------------------   768px   ------------------------------------------- */
-  .header-container {
-    padding: 4.5rem 12% 0;
-  }
-  #title .header-container {
-    padding-top: 5rem;
+  .content-wrap {
+    padding-bottom: 168px;
   }
   .subtext {
     font-size: 1.5rem;
   }
-  /* ---------------------- */
   .navbar {
     padding: 30px 10% 15px;
   }
   .navbar-brand {
     font-size: 1.7rem;
   }
-  /* ---------------------- */
-  .icons-container {
-    padding: 3rem 15%;
-  }
-  .descrip {
-    font-size: 1.2rem;
-  }
-  .img-col {
-    padding: 0 2.2rem;
-  }
-  .django-col {
-    padding: 0 2.5rem;
-  }
-  .collapse-container {
-    padding: 0 16% 8rem;
-  }
-  /* ---------------------- */
-  .form-item {
-    padding: 3.5rem 8% 6.5rem;
-  }
-  .result-item {
-    padding: 3rem 15% 6rem;
-  }
-  .results-card-body {
-    padding: .4rem 5% 1rem;
-  }
-  .score {
-    font-size: 3.2rem;
-  }
-  .events {
-    font-size: 1.2rem;
-  }
 }
 @media screen and (min-width: 960px) {
-  /* -------------------------------------------   960px   ------------------------------------------- */
   noscript p {
     font-size: 1.6rem;
   }
   h1 {
     font-size: 3.25rem;
   }
-  h2 {
-    font-size: 2.75rem;
+  .page-container {
+    min-height: 110vh;
   }
-  /* ---------------------- */
-  .header-container {
-    padding: 5.5rem 16% 0;
-  }
-  #title .header-container {
-    padding-top: 6rem;
-  }
-  /* ---------------------- */
   .navbar {
     padding: 3rem 14% 1.5rem;
   }
@@ -296,53 +112,12 @@ a {
   .navbar-brand {
     font-size: 1.8rem;
   }
-  /* ---------------------- */
-  .descrip {
-    font-size: 1.3rem;
-  }
-  .icons-container {
-    padding: 3rem 18%;
-  }
-  .img-col,
-  .django-col {
-    padding: 0 3rem;
-  }
-  .collapse-container {
-    padding: 0 18% 12rem;
-  }
-  /* ---------------------- */
-  .form-item {
-    padding: 3rem 15% 7rem;
-  }
-  .select-card-body {
-    padding: 2rem 1.5rem;
-  }
-  #teams1,
-  #teams2 {
-    margin-top: 22px;
-  }
-  .result-item {
-    padding: 3rem 18% 6rem;
-  }
-  .team1-name,
-  .team2-name {
-    font-size: 1.9rem;
-  }
-  .events-row {
-    padding-top: 1rem;
-  }
-  .events {
-    font-size: 1.3rem;
-  }
-  /* ---------------------- */
   .contact-icon {
     font-size: 4rem;
     margin: 0 18px;
   }
 }
 @media screen and (min-width: 1200px) {
-  /* -------------------------------------------   1200px   ------------------------------------------- */
-  /* ---------------------- */
   .navbar {
     padding-right: 18%;
     padding-left: 18%;
@@ -350,43 +125,11 @@ a {
   .nav-item {
     padding: 0 8px;
   }
-  /* ---------------------- */
-  .header-container {
-    padding: 5.5rem 20% 0;
-  }
   .button-div {
     padding-top: 4rem;
   }
-  /* ---------------------- */
-  .icons-container {
-    padding: 3rem 22%;
-  }
-  .img-col {
-    padding: 0 3.2rem;
-  }
-  .django-col {
-    padding: 0 3.5rem;
-  }
-  .collapse-container {
-    padding: 0 24% 14rem;
-  }
-  /* ---------------------- */
-  .form-item {
-    padding: 3.5rem 22% 8rem;
-  }
-  .result-item {
-    padding-left: 22%;
-    padding-right: 22%;
-  }
-  .score {
-    font-size: 3.5rem;
-  }
-  .results-card-body {
-    padding: .5rem 4% 1.1rem;
-  }
 }
 @media screen and (min-width: 1440px) {
-  /* -------------------------------------------   1440px   ------------------------------------------- */
   .nav-item {
     font-size: 1.25rem;
   }
