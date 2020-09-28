@@ -1,9 +1,11 @@
 // ================  Functions for the football match simulator  ================
 
 // Animate height change of carousel-inner
-function animateCrsl($active, $tgt) {
-   let nextHt = $tgt.outerHeight();
+function animateCrsl(e) {
+   let $active = $('.carousel-item.active');
+   let $tgt = $(e.relatedTarget);
    let thisHt = $active.outerHeight();
+   let nextHt = $tgt.outerHeight();
    let defaultHt = $('.form-item').outerHeight();
    if (nextHt > thisHt && $tgt.hasClass('result-item')) {
       $tgt.parent().animate({
@@ -204,7 +206,7 @@ $(document).ready(function() {
 
    // On carousel slide - animate height change of carousel
    $('.football-carousel').on('slide.bs.carousel', function(e) {
-      animateCrsl($('.carousel-item.active'), $(e.relatedTarget));
+      animateCrsl(e);
    });
 
    // After carousel slide (Reset 'simulating...' button / remove match results)
