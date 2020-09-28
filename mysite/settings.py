@@ -19,10 +19,10 @@ SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
 DEBUG = False
 # ============================================================================
 
-if DEBUG == True:
+if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
     INSTALLED_APPS = ['whitenoise.runserver_nostatic']
-elif DEBUG == False:
+else:
     ALLOWED_HOSTS = ['174.138.42.36', 'dixongrossnickle.com', 'www.dixongrossnickle.com']
     INSTALLED_APPS = []
 
