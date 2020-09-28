@@ -194,13 +194,13 @@ $(document).ready(function() {
       changeLeague(this);
    });
 
-   // Trigger change to populate teams
-   $('#leagues1, #leagues2').trigger('change');
-
    // Change team selects
    $('#teams1, #teams2').change(function() {
       changeTeam(this);
    });
+
+   // Trigger change to populate teams
+   $('#leagues1, #leagues2').trigger('change');
 
    // On carousel slide - animate height change of carousel
    $('.football-carousel').on('slide.bs.carousel', function(e) {
