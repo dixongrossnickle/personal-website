@@ -1,7 +1,7 @@
 // ================  Functions for the football match simulator  ================
 
 // Animate height change of carousel-inner
-function animateCrsl(e) {
+function animateCarousel(e) {
    let $active = $('.carousel-item.active');
    let $tgt = $(e.relatedTarget);
    let thisHt = $active.outerHeight();
@@ -18,89 +18,95 @@ function animateCrsl(e) {
    } else {
       $tgt.parent().animate({
          height: defaultHt
-      }, 400);
+      }, 200);
    }
 }
 
+// Update variables to reflect the most recently selected teams
+var lastSelectedTeam1;
+var lastSelectedTeam2;
+
+function updateLastSelected() {
+   lastSelectedTeam1 = $('#teams1 option:selected').val();
+   lastSelectedTeam2 = $('#teams2 option:selected').val();
+}
+
+// Toggle selected / disabled attributes when league is changed
+function selectDefaultTeams(teamNum, team1ToSelect, team2ToSelect) {
+   switch (teamNum) {
+      case '1':
+         oppTeamNum = 2;
+         toSelect = team1ToSelect;
+         break;
+      case '2':
+         oppTeamNum = 1;
+         toSelect = team2ToSelect;
+   }
+   if ($(`#teams${oppTeamNum} option:selected`).val() == toSelect) {
+      if (teamNum == '1') {
+         toSelect = team2ToSelect;
+      } else if (teamNum == '2') {
+         toSelect = team1ToSelect;
+      }
+   }
+   $(`#teams${teamNum} option[value=${toSelect}]`).prop('selected', true);
+}
+
 // Change teams on League Select change 
-function changeLeague(select) {
-   let $leagueSelect = $(select)
-   let league = $leagueSelect.children('option:selected').val();
+function changeLeague(leagueSelect) {
+   let league = leagueSelect.value;
    switch (league) {
       case 'E1':
-         dict = england;
+         teams = england;
          defaultSelect1 = 'E10';
          defaultSelect2 = 'E116';
          break;
       case 'G1':
-         dict = germany;
+         teams = germany;
          defaultSelect1 = 'G12';
          defaultSelect2 = 'G13';
          break;
       case 'I1':
-         dict = italy;
+         teams = italy;
          defaultSelect1 = 'I18';
          defaultSelect2 = 'I19';
          break;
       case 'S1':
-         dict = spain;
+         teams = spain;
          defaultSelect1 = 'S13';
          defaultSelect2 = 'S114';
          break;
       case 'F1':
-         dict = france;
+         teams = france;
          defaultSelect1 = 'F114';
          defaultSelect2 = 'F16';
    }
    // Create string of HTML options and append to select
-   var options = '';
-   for (teamID in dict) {
-      options += `<option value='${teamID}'>${dict[teamID]}</option>`;
+   let options = '';
+   for (teamID in teams) {
+      options += `<option value='${teamID}'>${teams[teamID]}</option>`;
    }
-   let teamNum = $leagueSelect[0].id.charAt(7);
+   let teamNum = leagueSelect.id.charAt(7);
    $(`#teams${teamNum}`).html(options);
-   // Toggle selected/disable attributes
-   selectAndDisable(league, teamNum, defaultSelect1, defaultSelect2);
+   // Select default teams / prevent same-team selection
+   selectDefaultTeams(teamNum, defaultSelect1, defaultSelect2);
 }
 
 // Toggle selected/disabled on team change
-function changeTeam(select) {
-   let $teamSelect = $(select)
-   let teamNum = $teamSelect[0].id.charAt(5);
-   let selectedTeam = $teamSelect.children('option:selected').val();
-   if (teamNum == 1) {
-      var oppTeamNum = 2;
-   } else if (teamNum == 2) {
-      var oppTeamNum = 1;
+function changeTeam(teamSelect) {
+   let teamNum = teamSelect.id.charAt(5);
+   switch (teamNum) {
+      case '1':
+         oppTeamNum = 2;
+         lastSelected = lastSelectedTeam1;
+         break;
+      case '2':
+         oppTeamNum = 1;
+         lastSelected = lastSelectedTeam2;
    }
-   $(`#teams${oppTeamNum} option[value='${selectedTeam}']`).prop('disabled', true).siblings().prop('disabled', false);
-}
-
-// Toggle selected / disabled attributes when league is changed
-function selectAndDisable(league, teamNum, team1ToSelect, team2ToSelect) {
-   if (teamNum == 1) {
-      var oppTeamNum = 2;
-      var toSelect = team1ToSelect;
-   } else if (teamNum == 2) {
-      var oppTeamNum = 1;
-      var toSelect = team2ToSelect;
+   if ($(`#teams${teamNum} option:selected`).val() == $(`#teams${oppTeamNum} option:selected`).val()) {
+      $(`#teams${oppTeamNum} option[value='${lastSelected}']`).prop('selected', true);
    }
-   // If Leagues are same, disable same-team matchup ; Change default selected team if already selected for opp. team
-   if ($(`#leagues${oppTeamNum} option:selected`).val() == league) {
-      let oppSelected = $(`#teams${oppTeamNum} option:selected`).val();
-      if (oppSelected == toSelect) {
-         if (teamNum == 1) {
-            toSelect = team2ToSelect;
-         } else if (teamNum == 2) {
-            toSelect = team1ToSelect;
-         }
-      }
-      $(`#teams${oppTeamNum} option[value=${toSelect}]`).prop('disabled', true);
-      $(`#teams${teamNum} option[value=${oppSelected}]`).prop('disabled', true);
-   } else {
-      $(`#teams${oppTeamNum}`).children().prop('disabled', false);
-   }
-   $(`#teams${teamNum} option[value=${toSelect}]`).prop('selected', true);
 }
 
 // Append results from AJAX - match results & events 
@@ -176,6 +182,7 @@ function ajaxRequest() {
 
 // Call button change and AJAX request - then handle results
 function simMain() {
+   $('.sim-button').prop('disabled', true);
    const promises = [changeBtnText(), ajaxRequest()];
    Promise.allSettled(promises).then((results) => {
       if (results[1].status === 'fulfilled') {
@@ -190,30 +197,28 @@ function simMain() {
 // =============  Event listeners  =============
 
 $(document).ready(function() {
-
    // Change league selects
    $('#leagues1, #leagues2').change(function() {
       changeLeague(this);
+      updateLastSelected();
    });
 
    // Change team selects
    $('#teams1, #teams2').change(function() {
       changeTeam(this);
+      updateLastSelected();
    });
-
-   // Trigger change to populate teams
-   $('#leagues1, #leagues2').trigger('change');
 
    // On carousel slide - animate height change of carousel
    $('.football-carousel').on('slide.bs.carousel', function(e) {
-      animateCrsl(e);
+      animateCarousel(e);
    });
 
    // After carousel slide (Reset 'simulating...' button / remove match results)
    $('.football-carousel').on('slid.bs.carousel', function(e) {
-      if (e.from === 0) {
+      if (e.from == 0) {
          $('.sim-button').val('simulate').prop('disabled', false);
-      } else if (e.from === 1) {
+      } else if (e.from == 1) {
          $('.events-row').remove();
          $('.team1-name, .team2-name, .team1-score, .team2-score').empty();
          $('.results-card-body').removeClass('hide-body');
@@ -228,7 +233,6 @@ $(document).ready(function() {
    // Main form submission
    $('.footballForm').submit(function(e) {
       e.preventDefault();
-      $('.sim-button').prop('disabled', true);
       simMain();
    });
 
@@ -236,5 +240,9 @@ $(document).ready(function() {
    $(window).on('orientationchange resize', () => {
       $('.carousel-inner').attr('style', 'height: auto;');
    });
+
+   // Trigger changes for league select and team select
+   $('#leagues1, #leagues2').trigger('change');
+   $('#teams1, #teams2').trigger('change');
 
 });
