@@ -2,54 +2,70 @@
 h5 {
   font-weight: 400;
 }
+
 h2 {
   font-size: 1.8rem;
 }
+
 .football-container {
   color: #3F3F44;
 }
+
 .form-item {
   padding: 2rem 5%;
 }
-.select-card-header, .results-card-header {
+
+.select-card-header,
+.results-card-header {
   background-color: #474749;
   color: #fbfbfb;
 }
+
 .select-card-body {
   background-color: #eeebeb;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
 .top-select-card {
   margin-bottom: 10px;
 }
+
 /* --------------  Results  --------------- */
 .result-item {
   padding: 2rem 4%;
 }
+
 .results-card-body {
   background-color: #f1f0f0;
   padding: .4rem 1.25rem 1rem;
 }
+
 .hide-body {
   padding: 0 !important;
 }
+
 .score-row {
   align-items: center;
 }
+
 .score {
   display: inline-block;
   font-size: 2.5rem;
 }
+
 .team1-name-col {
   padding: 0 6% 0 3%;
 }
+
 .team2-name-col {
   padding: 0 3% 0 6%;
 }
+
 .dash-col {
   padding: 0 3%;
 }
+
 /* ---------------  Events  ------------- */
 .red-card {
   display: inline-block;
@@ -58,35 +74,45 @@ h2 {
   height: 16px;
   border-radius: 2px;
 }
+
 .events {
   color: #3F3F44;
   line-height: 1.2;
 }
+
 .events-row {
   padding-top: .8rem;
 }
+
 .team1-event-min {
   padding: 0 2px 0 0;
 }
+
 .team2-event-min {
   padding: 0 0 0 2px;
 }
+
 .team1-event-name {
   padding-left: 5px;
 }
+
 .team2-event-name {
   padding-right: 5px;
 }
+
 @media screen and (min-width: 576px) {
   h2 {
     font-size: 2.25rem;
   }
+
   h5 {
     font-size: 1.5rem;
   }
+
   .select-card-header {
     padding: .75rem 1.25rem;
   }
+
   .responsive-select {
     height: calc(1.5em + 1rem + 2px);
     padding: .5rem 1rem;
@@ -94,58 +120,73 @@ h2 {
     line-height: 1.5;
     border-radius: .3rem;
   }
+
   .result-item {
     padding-left: 10%;
     padding-right: 10%;
   }
 }
+
 @media screen and (min-width: 768px) {
   .form-item {
     padding-left: 8%;
     padding-right: 8%;
   }
+
   .result-item {
     padding-left: 15%;
     padding-right: 15%;
   }
+
   .results-card-body {
     padding: .4rem 5% 1rem;
   }
+
   .score {
     font-size: 3.2rem;
   }
+
   .events {
     font-size: 1.2rem;
   }
 }
+
 @media screen and (min-width: 960px) {
   .content-wrap {
     padding-bottom: 184px;
   }
+
   h2 {
     font-size: 2.75rem;
   }
+
   .form-item {
     padding: 1rem 20% 4rem;
   }
+
   .select-card-body {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
+
   .result-item {
     padding: 1rem 18% 4rem;
   }
+
   .team1-name,
   .team2-name {
     font-size: 1.9rem;
   }
+
   .events-row {
     padding-top: 1rem;
   }
+
   .events {
     font-size: 1.3rem;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .form-item,
   .result-item {
@@ -153,13 +194,16 @@ h2 {
     padding-right: 24%;
     padding-bottom: 5rem;
   }
+
   .score {
     font-size: 3.5rem;
   }
+
   .results-card-body {
     padding: .5rem 4% 1.1rem;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .form-item,
   .result-item {

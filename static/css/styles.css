@@ -5,29 +5,36 @@ body {
   color: #3F3F44;
   min-height: 100%;
 }
+
 .page-container {
   min-height: 100vh;
 }
+
 .content-wrap {
   padding: 4rem 0 160px 0;
 }
+
 h1,
 h2 {
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
 }
+
 .button-div {
   padding-top: 3rem;
 }
+
 noscript p {
   padding: 0 0 3rem;
   font-size: 1.3rem;
   font-weight: 400;
   text-decoration: underline;
 }
+
 a {
   white-space: nowrap;
 }
+
 /* ------------------------------------   Focusable Elements   ------------------------------------ */
 .form-control:focus,
 .nav-link:focus {
@@ -35,107 +42,134 @@ a {
   box-shadow: inset 0 .2rem .2rem rgba(0, 0, 0, 0.075), 0 0 .4rem rgba(255, 0, 0, 0.6);
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
 .icon-link {
   outline: none;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
+
 .img-drop-shadow {
   filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, .6));
   -webkit-filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, .6));
 }
+
 /* ------------------------------------    Navbar   ------------------------------------ */
 .navbar {
   padding: 20px 4% 10px 7%;
 }
+
 .navbar-brand {
   font-size: 1.3rem;
   font-weight: 700;
   color: #3F3F44 !important;
 }
+
 /* ------------------------------    Contact    ------------------------------ */
 #contact {
   bottom: 0;
 }
+
 .footer-container {
   padding: 3rem 14% 4.5rem;
 }
+
 .contact-icon {
   margin: 0 10px;
   font-size: 2.5rem;
   color: #474749;
 }
+
 /* -------------------------   Media Queries    ------------------------- */
 @media screen and (min-width: 576px) {
   .subtext {
     font-size: 1.3rem;
   }
+
   .navbar-brand {
     font-size: 1.4rem;
   }
+
   .contact-icon {
     font-size: 3rem;
     margin: 0 12px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .content-wrap {
     padding-bottom: 168px;
   }
+
   .subtext {
     font-size: 1.5rem;
   }
+
   .navbar {
     padding: 30px 10% 15px;
   }
+
   .navbar-brand {
     font-size: 1.7rem;
   }
 }
+
 @media screen and (min-width: 960px) {
   noscript p {
     font-size: 1.6rem;
   }
+
   h1 {
     font-size: 3.25rem;
   }
+
   .page-container {
     min-height: 110vh;
   }
+
   .navbar {
     padding: 3rem 14% 1.5rem;
   }
+
   .nav-item {
     font-size: 1.15rem;
     padding: 0 5px;
   }
+
   .navbar-brand {
     font-size: 1.8rem;
   }
+
   .contact-icon {
     font-size: 4rem;
     margin: 0 18px;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .navbar {
     padding-right: 18%;
     padding-left: 18%;
   }
+
   .nav-item {
     padding: 0 8px;
   }
+
   .button-div {
     padding-top: 4rem;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .nav-item {
     font-size: 1.25rem;
   }
+
   .subtext {
     font-size: 1.6rem;
   }
+
   .btn-lg {
     font-size: 1.35rem;
   }
