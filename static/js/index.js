@@ -147,7 +147,6 @@ $(document).ready(function() {
    $('#email-btn-link').tooltip();
 
    // Copy email address to clipboard on click; hide tooltip after 2s
-   var emailTipTimeout;
    $('#email-btn-link').on("click keydown", function(e) {
       if (isValidClick(e)) {
          copyToClipboard('dixon.grossnickle@gmail.com').then(() => {
