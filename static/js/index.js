@@ -16,7 +16,7 @@ function handleAjaxError(jqXHR, exception) {
    try {
       console.log(jqXHR.responseJSON.message);
    } catch {
-      console.log('An unknown server error occurred.')
+      console.log('An unknown server error occurred.');
    }
    let errorMsg = '';
    if (jqXHR.status == 0) {
@@ -45,7 +45,7 @@ var collapseShown = null;
 var hiddenByClick = null;
 
 function toggleCollapse(iconLink, event) {
-   let $tgt = $(`#${iconLink.getAttribute('aria-controls')}`)
+   let $tgt = $(`#${iconLink.getAttribute('aria-controls')}`);
    let collapseID = $tgt[0].id;
    if (!collapseShown) {
       $tgt.collapse('show');

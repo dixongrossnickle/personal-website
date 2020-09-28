@@ -35,17 +35,17 @@ function updateLastSelected() {
 function selectDefaultTeams(teamNum, team1ToSelect, team2ToSelect) {
    switch (teamNum) {
       case '1':
-         oppTeamNum = 2;
-         toSelect = team1ToSelect;
+         oppTeamNum = 2
+         toSelect = team1ToSelect
          break;
       case '2':
-         oppTeamNum = 1;
-         toSelect = team2ToSelect;
+         oppTeamNum = 1
+         toSelect = team2ToSelect
    }
    if ($(`#teams${oppTeamNum} option:selected`).val() == toSelect) {
-      if (teamNum == '1') {
+      if (teamNum == 1) {
          toSelect = team2ToSelect;
-      } else if (teamNum == '2') {
+      } else if (teamNum == 2) {
          toSelect = team1ToSelect;
       }
    }
@@ -57,29 +57,29 @@ function changeLeague(leagueSelect) {
    let league = leagueSelect.value;
    switch (league) {
       case 'E1':
-         teams = england;
-         defaultSelect1 = 'E10';
-         defaultSelect2 = 'E116';
+         teams = england
+         defaultSelect1 = 'E10'
+         defaultSelect2 = 'E116'
          break;
       case 'G1':
-         teams = germany;
-         defaultSelect1 = 'G12';
-         defaultSelect2 = 'G13';
+         teams = germany
+         defaultSelect1 = 'G12'
+         defaultSelect2 = 'G13'
          break;
       case 'I1':
-         teams = italy;
-         defaultSelect1 = 'I18';
-         defaultSelect2 = 'I19';
+         teams = italy
+         defaultSelect1 = 'I18'
+         defaultSelect2 = 'I19'
          break;
       case 'S1':
-         teams = spain;
-         defaultSelect1 = 'S13';
-         defaultSelect2 = 'S114';
+         teams = spain
+         defaultSelect1 = 'S13'
+         defaultSelect2 = 'S114'
          break;
       case 'F1':
-         teams = france;
-         defaultSelect1 = 'F114';
-         defaultSelect2 = 'F16';
+         teams = france
+         defaultSelect1 = 'F114'
+         defaultSelect2 = 'F16'
    }
    // Create string of HTML options and append to select
    let options = '';
@@ -92,17 +92,17 @@ function changeLeague(leagueSelect) {
    selectDefaultTeams(teamNum, defaultSelect1, defaultSelect2);
 }
 
-// Toggle selected/disabled on team change
+// Switch selected teams if team is already selected
 function changeTeam(teamSelect) {
    let teamNum = teamSelect.id.charAt(5);
    switch (teamNum) {
       case '1':
-         oppTeamNum = 2;
-         lastSelected = lastSelectedTeam1;
+         oppTeamNum = 2
+         lastSelected = lastSelectedTeam1
          break;
       case '2':
-         oppTeamNum = 1;
-         lastSelected = lastSelectedTeam2;
+         oppTeamNum = 1
+         lastSelected = lastSelectedTeam2
    }
    if ($(`#teams${teamNum} option:selected`).val() == $(`#teams${oppTeamNum} option:selected`).val()) {
       $(`#teams${oppTeamNum} option[value='${lastSelected}']`).prop('selected', true);
@@ -112,9 +112,9 @@ function changeTeam(teamSelect) {
 // Append results from AJAX - match results & events 
 function appendResults(results, homeTeam, awayTeam, matchEvents) {
    $('.team1-name').append(homeTeam.name);
-   $('.team2-name').append(awayTeam.name);
    $('.team1-score').append(results.homeTeamGoals);
    $('.team2-score').append(results.awayTeamGoals);
+   $('.team2-name').append(awayTeam.name);
    const $cardBody = $('.results-card-body');
    let i = 0;
    for (min in matchEvents) {
@@ -237,12 +237,12 @@ $(document).ready(function() {
    });
 
    // Correct heights of .carousel-inner's to prevent overflow issues
-   $(window).on('orientationchange resize', () => {
+   $(window).on('orientationchange resize', function() {
       $('.carousel-inner').attr('style', 'height: auto;');
    });
 
-   // Trigger changes for league select and team select
+   // Trigger changes for league select and update last selected variables
    $('#leagues1, #leagues2').trigger('change');
-   $('#teams1, #teams2').trigger('change');
+   updateLastSelected();
 
 });
