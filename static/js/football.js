@@ -237,7 +237,7 @@ $(document).ready(function() {
    });
 
    // Correct heights of .carousel-inner's to prevent overflow issues
-   $(window).on('orientationchange resize', function() {
+   $(window).on('orientationchange', function() {
       $('.carousel-inner').attr('style', 'height: auto;');
    });
 
@@ -251,6 +251,6 @@ $(document).ready(function() {
       keyboard: false,
       pause: false,
       touch: false
-   })
+   });
 
 });
