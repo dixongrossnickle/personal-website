@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .football_sim.team import Team
 from .football_sim.matchup import MatchUp
-# Import email
 from mysite.settings import DEBUG, EMAIL_HOST_USER
 from django.core.mail import send_mail
 
@@ -44,7 +43,6 @@ def match_sim_json(request):
             }, status=200)
             response['Access-Control-Allow-Origin'] = '*'
             return response
-        
         except KeyError:
             return handle_error('KeyError', request, away_team_id, HomeTeam, AwayTeam)
         except:
