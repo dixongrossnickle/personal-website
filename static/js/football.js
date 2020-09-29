@@ -245,4 +245,12 @@ $(document).ready(function() {
    $('#leagues1, #leagues2').trigger('change');
    updateLastSelected();
 
+   // Initialize carousel
+   $('.football-carousel').carousel({
+      interval: false,
+      keyboard: false,
+      pause: false,
+      touch: false
+   })
+
 });

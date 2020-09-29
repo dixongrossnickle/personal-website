@@ -138,14 +138,6 @@ $(document).ready(function() {
       }
    });
 
-   // Initialize collapse
-   $('.collapse-container div:even').collapse({
-      'toggle': false
-   });
-
-   // Initialize tooltip
-   $('#email-btn-link').tooltip();
-
    // Copy email address to clipboard on click; hide tooltip after 2s
    $('#email-btn-link').on("click keydown", function(e) {
       if (isValidClick(e)) {
@@ -155,6 +147,17 @@ $(document).ready(function() {
             }, 2000);
          });
       }
+   });
+
+   // Initialize collapse
+   $('.collapse').collapse({
+      toggle: false
+   });
+
+   // Initialize tooltip
+   $('#email-btn-link').tooltip({
+      container: 'body',
+      title: 'Copy email address'
    });
 
 });
