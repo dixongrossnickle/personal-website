@@ -127,6 +127,10 @@ a {
     min-height: 110vh;
   }
 
+  .content-wrap {
+    padding-bottom: 184px;
+  }
+
   .navbar {
     padding: 3rem 14% 1.5rem;
   }

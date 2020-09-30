@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}<title>simulator | dixon grossnickle</title>{% endblock %}
-{% block extra_styles %}<link rel="stylesheet" href="{% static 'css/soccer.min.css' %}" />{% endblock %}
+{% block extra_styles %}<link rel="stylesheet" href="{% static 'css/soccer.css' %}" />{% endblock %}
 {% block extra_scripts %}
-<script defer src="{% static 'js/leagues.min.js' %}"></script>
-<script defer src="{% static 'js/football.min.js' %}"></script>
+<script defer src="{% static 'js/leagues.js' %}"></script>
+<script defer src="{% static 'js/football.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-<!-- Football Sim Section -->
 <div class="col-md-10 col-lg-8">
    <section id="match-simulator">
       <div class="container-fluid pb-md-4">
@@ -20,97 +19,106 @@
    </section>
 </div>
 {% endblock %}
-
 {% block carousel %}
-<div class="container-fluid football-container p-0">
-   <div class="football-carousel carousel slide">
-      <div class="carousel-inner">
-         <div class="form-item carousel-item active">
-            <form class="footballForm" method="GET" action="run/" data-url="{{ request.build_absolute_uri|safe }}">
-               <div class="row">
-                  <div class="col-sm">
-                     <div class="card select-card top-select-card">
-                        <div class="card-header select-card-header text-center">
-                           <h5 class="m-0">Home</h5>
-                        </div>
-                        <div class="card-body select-card-body">
-                           <div class="form-group row mx-0">
-                              <label for="leagues1" class="col-3 col-form-label px-0 text-center">League:</label>
-                              <select class="col-9 form-control" id="leagues1" required>
-                                 <option value="E1" selected>England 🏴󠁧󠁢󠁥󠁮󠁧󠁿</option>
-                                 <option value="G1">Germany 🇩🇪</option>
-                                 <option value="I1">Italy 🇮🇹</option>
-                                 <option value="S1">Spain 🇪🇸</option>
-                                 <option value="F1">France 🇫🇷</option>
-                              </select>
+<div class="row justify-content-center">
+   <div class="container-fluid p-0">
+      <div class="football-carousel carousel slide">
+         <div class="carousel-inner">
+            <div class="form-item carousel-item active">
+               <div class="row justify-content-center">
+                  <div class="col-9 col-lg-7 col-xl-5">
+                     <form class="footballForm" method="GET" action="run/" data-url="{{ request.build_absolute_uri|safe }}">
+                        <div class="row">
+                           <div class="col-sm">
+                              <div class="card select-card top-select-card">
+                                 <div class="card-header select-card-header text-center">
+                                    <h5 class="m-0">Home</h5>
+                                 </div>
+                                 <div class="card-body select-card-body">
+                                    <div class="form-group row mx-0">
+                                       <label for="leagues1" class="col-3 col-form-label px-0 text-center">League:</label>
+                                       <select class="col-9 form-control" id="leagues1" required>
+                                          <option value="E1" selected>England 🏴󠁧󠁢󠁥󠁮󠁧󠁿</option>
+                                          <option value="G1">Germany 🇩🇪</option>
+                                          <option value="I1">Italy 🇮🇹</option>
+                                          <option value="S1">Spain 🇪🇸</option>
+                                          <option value="F1">France 🇫🇷</option>
+                                       </select>
+                                    </div>
+                                    <div class="form-group row mx-0 mb-0">
+                                       <label for="teams1" class="col-3 col-form-label px-0 text-center">Team:</label>
+                                       <select class="col-9 form-control" id="teams1" required>
+                                          <!-- Teams populated by javascript -->
+                                       </select>
+                                    </div>
+                                 </div>
+                              </div>
                            </div>
-                           <div class="form-group row mx-0 mb-0">
-                              <label for="teams1" class="col-3 col-form-label px-0 text-center">Team:</label>
-                              <select class="col-9 form-control" id="teams1" required>
-                                 <!-- Teams populated by javascript -->
-                              </select>
+                           <div class="col-sm">
+                              <div class="card select-card">
+                                 <div class="card-header select-card-header text-center">
+                                    <h5 class="m-0">Away</h5>
+                                 </div>
+                                 <div class="card-body select-card-body">
+                                    <div class="form-group row mx-0">
+                                       <label for="leagues2" class="col-3 col-form-label px-0 text-center">League:</label>
+                                       <select class="col-9 form-control" id="leagues2" required>
+                                          <option value="E1" selected>England 🏴󠁧󠁢󠁥󠁮󠁧󠁿</option>
+                                          <option value="G1">Germany 🇩🇪</option>
+                                          <option value="I1">Italy 🇮🇹</option>
+                                          <option value="S1">Spain 🇪🇸</option>
+                                          <option value="F1">France 🇫🇷</option>
+                                       </select>
+                                    </div>
+                                    <div class="form-group row mx-0 mb-0">
+                                       <label for="teams2" class="col-3 col-form-label px-0 text-center">Team:</label>
+                                       <select class="col-9 form-control" id="teams2" required>
+                                          <!-- Teams populated by javascript -->
+                                       </select>
+                                    </div>
+                                 </div>
+                              </div>
                            </div>
                         </div>
-                     </div>
+                        <div class="d-flex justify-content-center button-div">
+                           <input type="submit" value="simulate" class="btn btn-dark btn-lg sim-button" tabindex="0">
+                        </div>
+                     </form>
                   </div>
-                  <div class="col-sm">
-                     <div class="card select-card">
-                        <div class="card-header select-card-header text-center">
-                           <h5 class="m-0">Away</h5>
-                        </div>
-                        <div class="card-body select-card-body">
-                           <div class="form-group row mx-0">
-                              <label for="leagues2" class="col-3 col-form-label px-0 text-center">League:</label>
-                              <select class="col-9 form-control" id="leagues2" required>
-                                 <option value="E1" selected>England 🏴󠁧󠁢󠁥󠁮󠁧󠁿</option>
-                                 <option value="G1">Germany 🇩🇪</option>
-                                 <option value="I1">Italy 🇮🇹</option>
-                                 <option value="S1">Spain 🇪🇸</option>
-                                 <option value="F1">France 🇫🇷</option>
-                              </select>
-                           </div>
-                           <div class="form-group row mx-0 mb-0">
-                              <label for="teams2" class="col-3 col-form-label px-0 text-center">Team:</label>
-                              <select class="col-9 form-control" id="teams2" required>
-                                 <!-- Teams populated by javascript -->
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="d-flex justify-content-center button-div">
-                  <input type="submit" value="simulate" class="btn btn-dark btn-lg sim-button" tabindex="0">
-               </div>
-            </form>
-         </div>
-         <div class="carousel-item result-item">
-            <div class="card results-card">
-               <div class="card-header results-card-header">
-                  <div class="row score-row">
-                     <div class="col team1-name-col">
-                        <h5 class="team1-name m-0"></h5>
-                     </div>
-                     <div class="col-auto goals1-col text-right p-0">
-                        <h5 class="score team1-score m-0"></h5>
-                     </div>
-                     <div class="col-auto dash-col text-center">
-                        <h5 class="score dash m-0">-</h5>
-                     </div>
-                     <div class="col-auto goals2-col p-0">
-                        <h5 class="score team2-score m-0"></h5>
-                     </div>
-                     <div class="col team2-name-col text-right">
-                        <h5 class="team2-name m-0"></h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="card-body results-card-body">
-                  <!-- Match results inserted here by javascript -->
                </div>
             </div>
-            <div class="d-flex justify-content-center button-div">
-               <input type="button" value="reset" class="btn btn-dark btn-lg reset-btn" tabindex="0">
+            <div class="carousel-item result-item">
+               <div class="row justify-content-center">
+                  <div class="col-10 col-md-9 col-lg-7 col-xl-6">
+                     <div class="card results-card">
+                        <div class="card-header results-card-header">
+                           <div class="row score-row">
+                              <div class="col team1-name-col">
+                                 <h5 class="team1-name m-0"></h5>
+                              </div>
+                              <div class="col-auto goals1-col text-right p-0">
+                                 <h5 class="score team1-score m-0"></h5>
+                              </div>
+                              <div class="col-auto dash-col text-center">
+                                 <h5 class="score dash m-0">-</h5>
+                              </div>
+                              <div class="col-auto goals2-col p-0">
+                                 <h5 class="score team2-score m-0"></h5>
+                              </div>
+                              <div class="col team2-name-col text-right">
+                                 <h5 class="team2-name m-0"></h5>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card-body results-card-body">
+                           <!-- Match results inserted here by javascript -->
+                        </div>
+                     </div>
+                     <div class="d-flex justify-content-center button-div">
+                        <input type="button" value="reset" class="btn btn-dark btn-lg reset-btn" tabindex="0">
+                     </div>
+                  </div>
+               </div>
             </div>
          </div>
       </div>

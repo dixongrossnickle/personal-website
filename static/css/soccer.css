@@ -7,12 +7,9 @@ h2 {
   font-size: 1.8rem;
 }
 
-.football-container {
-  color: #3F3F44;
-}
-
-.form-item {
-  padding: 2rem 5%;
+.form-item,
+.result-item {
+  padding: 2rem 0;
 }
 
 .select-card-header,
@@ -32,10 +29,6 @@ h2 {
 }
 
 /* --------------  Results  --------------- */
-.result-item {
-  padding: 2rem 4%;
-}
-
 .results-card-body {
   background-color: #f1f0f0;
   padding: .4rem 1.25rem 1rem;
@@ -112,32 +105,9 @@ h2 {
   .select-card-header {
     padding: .75rem 1.25rem;
   }
-
-  .responsive-select {
-    height: calc(1.5em + 1rem + 2px);
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: .3rem;
-  }
-
-  .result-item {
-    padding-left: 10%;
-    padding-right: 10%;
-  }
 }
 
 @media screen and (min-width: 768px) {
-  .form-item {
-    padding-left: 8%;
-    padding-right: 8%;
-  }
-
-  .result-item {
-    padding-left: 15%;
-    padding-right: 15%;
-  }
-
   .results-card-body {
     padding: .4rem 5% 1rem;
   }
@@ -152,25 +122,18 @@ h2 {
 }
 
 @media screen and (min-width: 960px) {
-  .content-wrap {
-    padding-bottom: 184px;
-  }
-
   h2 {
     font-size: 2.75rem;
   }
 
-  .form-item {
-    padding: 1rem 20% 4rem;
+  .form-item,
+  .result-item {
+    padding-bottom: 5rem;
   }
 
   .select-card-body {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-  }
-
-  .result-item {
-    padding: 1rem 18% 4rem;
   }
 
   .team1-name,
@@ -190,9 +153,7 @@ h2 {
 @media screen and (min-width: 1200px) {
   .form-item,
   .result-item {
-    padding-left: 24%;
-    padding-right: 24%;
-    padding-bottom: 5rem;
+    padding-bottom: 6rem;
   }
 
   .score {
@@ -201,12 +162,5 @@ h2 {
 
   .results-card-body {
     padding: .5rem 4% 1.1rem;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .form-item,
-  .result-item {
-    padding-bottom: 6rem;
   }
 }
