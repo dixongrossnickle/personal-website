@@ -3,9 +3,9 @@
 // Handle AJAX request error
 function handleAjaxError(jqXHR, exception) {
    try {
-      console.log(jqXHR.responseJSON.message);
+      var responseMsg = `\n\n${jqXHR.responseJSON.message}`;
    } catch {
-      // pass – message was not returned from server
+      var responseMsg = '';
    }
    let errorMsg = '';
    if (jqXHR.status == 0) {
@@ -25,7 +25,7 @@ function handleAjaxError(jqXHR, exception) {
    } else {
       errorMsg = `Uncaught exception:\n${jqXHR.responseText}`;
    }
-   return errorMsg;
+   return `${errorMsg}${responseMsg}`;
 }
 
 // Animate height change of carousel-inner
@@ -35,11 +35,11 @@ function animateCarousel(event) {
    let thisHt = $active.outerHeight();
    let nextHt = $tgt.outerHeight();
    let defaultHt = $('.form-item').outerHeight();
-   if (nextHt > thisHt && $tgt.hasClass('result-item')) {
+   if (nextHt > thisHt && event.from == 0) {
       $tgt.parent().animate({
          height: nextHt
       }, 600);
-   } else if (nextHt < thisHt && $tgt.hasClass('form-item')) {
+   } else if (nextHt < thisHt && event.from == 1) {
       $tgt.parent().animate({
          height: nextHt
       }, 600);
@@ -180,6 +180,7 @@ function appendResults(results, homeTeam, awayTeam, matchEvents) {
 
 // Change button text, (90 x 15ms) + 300ms buffer
 function changeBtnText() {
+   $('.sim-button').prop('disabled', true);
    return new Promise(res => {
       let i = 1;
       const simBtn = $('.sim-button')[0];
@@ -196,7 +197,6 @@ function changeBtnText() {
 
 // Make AJAX request and append results
 const $footballForm = $('.footballForm');
-
 function ajaxRequest() {
    return new Promise((res, rej) => {
       let thisURL = `${$footballForm.attr('data-url')}${$footballForm.attr('action')}`;
@@ -223,7 +223,6 @@ function ajaxRequest() {
 
 // Call button change and AJAX request - then either show results or error message
 function simMain() {
-   $('.sim-button').prop('disabled', true);
    const promises = [changeBtnText(), ajaxRequest()];
    Promise.all(promises).then(
       () => {
