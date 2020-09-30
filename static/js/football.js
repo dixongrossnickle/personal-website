@@ -1,9 +1,37 @@
 // ================  Functions for the football match simulator  ================
 
+// Handle AJAX request error
+function handleAjaxError(jqXHR, exception) {
+   try {
+      console.log(jqXHR.responseJSON.message);
+   } catch {
+      // pass – message was not returned from server
+   }
+   let errorMsg = '';
+   if (jqXHR.status == 0) {
+      errorMsg = 'Could not connect to server. Please check your network connection.';
+   } else if (jqXHR.status == 403) {
+      errorMsg = 'Forbidden - CSRF verification failed [403].';
+   } else if (jqXHR.status == 404) {
+      errorMsg = 'Requested page not found [404].';
+   } else if (jqXHR.status == 500) {
+      errorMsg = 'Internal server error [500].';
+   } else if (exception == 'parsererror') {
+      errorMsg = 'Requested JSON parse failed.';
+   } else if (exception == 'timeout') {
+      errorMsg = 'Request timed out.';
+   } else if (exception == 'abort') {
+      errorMsg = 'AJAX request aborted.';
+   } else {
+      errorMsg = `Uncaught exception:\n${jqXHR.responseText}`;
+   }
+   return errorMsg;
+}
+
 // Animate height change of carousel-inner
-function animateCarousel(e) {
+function animateCarousel(event) {
    let $active = $('.carousel-item.active');
-   let $tgt = $(e.relatedTarget);
+   let $tgt = $(event.relatedTarget);
    let thisHt = $active.outerHeight();
    let nextHt = $tgt.outerHeight();
    let defaultHt = $('.form-item').outerHeight();
@@ -35,17 +63,17 @@ function updateLastSelected() {
 function selectDefaultTeams(teamNum, team1ToSelect, team2ToSelect) {
    switch (teamNum) {
       case '1':
-         oppTeamNum = 2
-         toSelect = team1ToSelect
+         oppTeamNum = '2',
+         toSelect = team1ToSelect;
          break;
       case '2':
-         oppTeamNum = 1
-         toSelect = team2ToSelect
+         oppTeamNum = '1',
+         toSelect = team2ToSelect;
    }
    if ($(`#teams${oppTeamNum} option:selected`).val() == toSelect) {
-      if (teamNum == 1) {
+      if (teamNum == '1') {
          toSelect = team2ToSelect;
-      } else if (teamNum == 2) {
+      } else if (teamNum == '2') {
          toSelect = team1ToSelect;
       }
    }
@@ -57,29 +85,29 @@ function changeLeague(leagueSelect) {
    let league = leagueSelect.value;
    switch (league) {
       case 'E1':
-         teams = england
-         defaultSelect1 = 'E10'
-         defaultSelect2 = 'E116'
+         teams = england,
+         defaultSelect1 = 'E10',
+         defaultSelect2 = 'E116';
          break;
       case 'G1':
-         teams = germany
-         defaultSelect1 = 'G12'
-         defaultSelect2 = 'G13'
+         teams = germany,
+         defaultSelect1 = 'G12',
+         defaultSelect2 = 'G13';
          break;
       case 'I1':
-         teams = italy
-         defaultSelect1 = 'I18'
-         defaultSelect2 = 'I19'
+         teams = italy,
+         defaultSelect1 = 'I18',
+         defaultSelect2 = 'I19';
          break;
       case 'S1':
-         teams = spain
-         defaultSelect1 = 'S13'
-         defaultSelect2 = 'S114'
+         teams = spain,
+         defaultSelect1 = 'S13',
+         defaultSelect2 = 'S114';
          break;
       case 'F1':
-         teams = france
-         defaultSelect1 = 'F114'
-         defaultSelect2 = 'F16'
+         teams = france,
+         defaultSelect1 = 'F114',
+         defaultSelect2 = 'F16';
    }
    // Create string of HTML options and append to select
    let options = '';
@@ -97,12 +125,12 @@ function changeTeam(teamSelect) {
    let teamNum = teamSelect.id.charAt(5);
    switch (teamNum) {
       case '1':
-         oppTeamNum = 2
-         lastSelected = lastSelectedTeam1
+         oppTeamNum = '2',
+         lastSelected = lastSelectedTeam1;
          break;
       case '2':
-         oppTeamNum = 1
-         lastSelected = lastSelectedTeam2
+         oppTeamNum = '1',
+         lastSelected = lastSelectedTeam2;
    }
    if ($(`#teams${teamNum} option:selected`).val() == $(`#teams${oppTeamNum} option:selected`).val()) {
       $(`#teams${oppTeamNum} option[value='${lastSelected}']`).prop('selected', true);
@@ -126,14 +154,26 @@ function appendResults(results, homeTeam, awayTeam, matchEvents) {
             eventHTML = `<div class='red-card'></div>`;
       }
       if (matchEvents[min].team == homeTeam.name) {
-         $cardBody.append(`<div class='row events-row d-flex align-items-center'><div class='col-4 events team1-event-name'>${matchEvents[min].player}</div><div class='col text-nowrap events team1-event-min text-right'>${`${min}'`}</div><div class='col-1 events team1-event-type p-0 text-center'>${eventHTML}</div><div class='col-6'></div></div>`);
+         $cardBody.append(
+         `<div class='row events-row align-items-center'>
+            <div class='col-4 events team1-event-name'>${matchEvents[min].player}</div>
+            <div class='col text-nowrap events team1-event-min text-right'>${`${min}'`}</div>
+            <div class='col-1 events team1-event-type p-0 text-center'>${eventHTML}</div>
+            <div class='col-6'></div>
+         </div>`);
 
       } else if (matchEvents[min].team == awayTeam.name) {
-         $cardBody.append(`<div class='row events-row d-flex align-items-center'><div class='col-6'></div><div class='col-1 events team2-event-type p-0 text-center'>${eventHTML}</div><div class='col text-nowrap events team2-event-min'>${`${min}'`}</div><div class='col-4 events team2-event-name text-right'>${matchEvents[min].player}</div></div>`);
+         $cardBody.append(
+         `<div class='row events-row align-items-center'>
+            <div class='col-6'></div>
+            <div class='col-1 events team2-event-type p-0 text-center'>${eventHTML}</div>
+            <div class='col text-nowrap events team2-event-min'>${`${min}'`}</div>
+            <div class='col-4 events team2-event-name text-right'>${matchEvents[min].player}</div>
+         </div>`);
       }
       i += 1;
    }
-   if (i === 0) {
+   if (i == 0) {
       $cardBody.addClass('hide-body');
    }
 }
@@ -143,7 +183,7 @@ function changeBtnText() {
    return new Promise(res => {
       let i = 1;
       const simBtn = $('.sim-button')[0];
-      let btnTimer = setTimeout(run = () => {
+      btnTimer = setTimeout(run = () => {
          simBtn.value = `simulating – ${i++}'`;
          btnTimer = setTimeout(run, 15);
          if (i > 90) {
@@ -172,26 +212,29 @@ function ajaxRequest() {
          })
          .done(response => {
             appendResults(response.result, response.homeTeam, response.awayTeam, response.matchEvents);
-            res('success');
+            res();
          })
          .fail((jqXHR, exception) => {
             rej(handleAjaxError(jqXHR, exception));
+            clearTimeout(btnTimer);
          });
    });
 }
 
-// Call button change and AJAX request - then handle results
+// Call button change and AJAX request - then either show results or error message
 function simMain() {
    $('.sim-button').prop('disabled', true);
    const promises = [changeBtnText(), ajaxRequest()];
-   Promise.allSettled(promises).then((results) => {
-      if (results[1].status === 'fulfilled') {
+   Promise.all(promises).then(
+      () => {
          $('.football-carousel').carousel('next');
-      } else if (results[1].status === 'rejected') {
+      },
+      (reason) => {
+         console.log(`\n${reason}\n\n`)
          $('.sim-button').val('simulate').prop('disabled', false);
-         alert(results[1].reason);
+         alert(`${reason}\n\nSee console for details.`);
       }
-   });
+   );
 }
 
 // =============  Event listeners  =============
