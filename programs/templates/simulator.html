@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-<title>simulator | dixon grossnickle</title>
-{% endblock %}
-{% block extra_styles %}
-<link rel="stylesheet" href="{% static 'css/soccer.min.css' %}" />
-{% endblock %}
+{% block title %}<title>simulator | dixon grossnickle</title>{% endblock %}
+{% block extra_styles %}<link rel="stylesheet" href="{% static 'css/soccer.min.css' %}" />{% endblock %}
 {% block extra_scripts %}
 <script defer src="{% static 'js/leagues.min.js' %}"></script>
 <script defer src="{% static 'js/football.min.js' %}"></script>
@@ -24,7 +20,7 @@
    </section>
 </div>
 {% endblock %}
-<!-- Carousel -->
+
 {% block carousel %}
 <div class="container-fluid football-container p-0">
    <div class="football-carousel carousel slide">

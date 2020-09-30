@@ -11,35 +11,6 @@ function isValidClick(e) {
    return true;
 }
 
-// Handle AJAX request error
-function handleAjaxError(jqXHR, exception) {
-   try {
-      console.log(jqXHR.responseJSON.message);
-   } catch {
-      console.log('An unknown server error occurred.');
-   }
-   let errorMsg = '';
-   if (jqXHR.status == 0) {
-      errorMsg = 'Could not connect to server. Please check your network connection.';
-   } else if (jqXHR.status == 403) {
-      errorMsg = 'Forbidden - CSRF verification failed [403].';
-   } else if (jqXHR.status == 404) {
-      errorMsg = 'Requested page not found [404].';
-   } else if (jqXHR.status == 500) {
-      errorMsg = 'Internal server error [500].';
-   } else if (exception == 'parsererror') {
-      errorMsg = 'Requested JSON parse failed.';
-   } else if (exception == 'timeout') {
-      errorMsg = 'Request timed out.';
-   } else if (exception == 'abort') {
-      errorMsg = 'AJAX request aborted.';
-   } else {
-      errorMsg = 'Uncaught exception.';
-      console.log(jqXHR.responseText);
-   }
-   return errorMsg;
-}
-
 // Show/hide collapsible section
 var collapseShown = null;
 var hiddenByClick = null;
@@ -50,7 +21,7 @@ function toggleCollapse(iconLink, event) {
    if (!collapseShown) {
       $tgt.collapse('show');
       collapseShown = collapseID;
-   } else if (collapseShown === collapseID) {
+   } else if (collapseShown == collapseID) {
       $tgt.collapse('hide');
       collapseShown = null;
       if (event.type == 'click') {
@@ -74,14 +45,17 @@ function copyToClipboard(text) {
          });
          return;
       }
-      navigator.clipboard.writeText(text).then(() => {
-         $('.tooltip-inner').text('Copied to clipboard.');
-         res();
-      }, (err) => {
-         console.error('Async: Unable to copy email\n', err);
-         rej();
-      });
-   })
+      navigator.clipboard.writeText(text).then(
+         () => {
+            $('.tooltip-inner').text('Copied to clipboard.');
+            res();
+         },
+         (err) => {
+            console.error('Async: Unable to copy email\n', err);
+            rej();
+         }
+      );
+   });
 }
 
 // Fallback to Async clipboard copy 
@@ -114,27 +88,24 @@ $(document).ready(function() {
    // Add drop shadows on mouseover and focus-in
    $('.icon-link').on("mouseover focusin", function() {
       this.classList.add('img-drop-shadow');
-   })
-
-   // Remove shadow on focus-out
-   $('.icon-link').on("focusout", function() {
-      this.classList.remove('img-drop-shadow');
-   })
+   });
 
    // Remove shadow on mouseout
    $('.icon-link').on("mouseout", function() {
       if (this != document.activeElement || (!collapseShown && hiddenByClick)) {
          this.classList.remove('img-drop-shadow');
       }
-   })
+   });
 
-   // Remove shadow if user clicks to hide collapse
+   // Remove shadow on focus-out
+   $('.icon-link').on("focusout", function() {
+      this.classList.remove('img-drop-shadow');
+   });
+
+   // Toggle collapse if click, enter, or spacebar
    $('#skills .icon-link').on("click keydown", function(e) {
       if (isValidClick(e)) {
          toggleCollapse(this, e);
-         if (!collapseShown && e.type == 'click') {
-            this.classList.remove('img-drop-shadow');
-         }
       }
    });
 
