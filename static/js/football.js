@@ -139,9 +139,9 @@ function changeTeam(teamSelect) {
 
 // Append results from AJAX - match results & events 
 function appendResults(results, homeTeam, awayTeam, matchEvents) {
-   $('.team1-name').append(homeTeam.name);
    $('.team1-score').append(results.homeTeamGoals);
    $('.team2-score').append(results.awayTeamGoals);
+   $('.team1-name').append(homeTeam.name);
    $('.team2-name').append(awayTeam.name);
    const $cardBody = $('.results-card-body');
    let i = 0;
@@ -280,7 +280,7 @@ $(document).ready(function() {
 
    // Correct heights of .carousel-inner's to prevent overflow issues
    $(window).on('orientationchange', function() {
-      $('.carousel-inner').attr('style', 'height: auto;');
+      $('.carousel-inner').removeAttr('style');
    });
 
    // Trigger changes for league select and update last selected variables
