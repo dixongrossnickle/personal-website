@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}<title>home | dixon grossnickle</title>{% endblock %}
-{% block extra_styles %}<link rel="stylesheet" href="{% static 'css/home.css' %}" />{% endblock %}
+{% block title %}<title>home | dixon grossnickle</title>{% endblock title %}
+{% block extra_styles %}<link rel="stylesheet" href="{% static 'css/home.css' %}" />{% endblock extra_styles %}
 
 {% block content %}
 <div class="col-md-10 col-lg-8">
@@ -70,4 +70,4 @@
    </section>
 </div>
 
-{% endblock %}
+{% endblock content %}

@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}<title>simulator | dixon grossnickle</title>{% endblock %}
+{% block title %}<title>simulator | dixon grossnickle</title>{% endblock title %}
 {% block extra_styles %}
-<link rel="stylesheet" href="{% static 'css/soccer.css' %}" />{% endblock %}
+<link rel="stylesheet" href="{% static 'css/soccer.css' %}" />
+{% endblock extra_styles %}
 {% block extra_scripts %}
 <script defer src="{% static 'js/leagues.js' %}"></script>
 <script defer src="{% static 'js/football.js' %}"></script>
-{% endblock %}
+{% endblock extra_scripts %}
 
 {% block content %}
 <div class="col-md-10 col-lg-8">
@@ -19,7 +20,7 @@
       </div>
    </section>
 </div>
-{% endblock %}
+{% endblock content %}
 
 {% block carousel %}
 <div class="football-carousel carousel slide">
@@ -96,10 +97,10 @@
                         <div class="col team1-name-col">
                            <h5 class="team1-name m-0"></h5>
                         </div>
-                        <div class="col-auto goals1-col px-0">
+                        <div class="col-auto goals1-col text-right px-0">
                            <h5 class="score team1-score m-0"></h5>
                         </div>
-                        <div class="col-auto dash-col">
+                        <div class="col-auto dash-col text-center">
                            <h5 class="score dash m-0">-</h5>
                         </div>
                         <div class="col-auto goals2-col px-0">
@@ -122,4 +123,4 @@
       </div>
    </div>
 </div>
-{% endblock %}
+{% endblock carousel %}
