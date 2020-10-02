@@ -20,4 +20,4 @@ The Django app is served by [Gunicorn](https://docs.gunicorn.org/en/stable/) wit
 # Football Simulator
 The football simulator uses [pandas](https://pypi.org/project/pandas/) to read two CSV's: one containing every match from Europe's top 5 leagues (2019-20 season), and another containing the all players' ratings from the FIFA 20 video game. It finds the mean and standard deviation of each team's goals for & goals conceded, depending on home or away matches. Then, it creates Gaussian distributions for each, and averages the two to determine the goals scored by each team.<br/><br/>
 
-See [football-simulator](https://github.com/dixongrossnickle/football-simulator/) for further details.
+See [football-simulator](https://github.com/dixongrossnickle/football-simulator/) for more details.
