@@ -23,11 +23,11 @@
 {% endblock content %}
 
 {% block carousel %}
-<div class="football-carousel carousel slide">
-   <div class="carousel-inner">
-      <div class="form-item carousel-item active">
-         <div class="row justify-content-center">
-            <div class="col-9 col-lg-7 col-xl-5">
+<div class="container-fluid px-0">
+   <div class="football-carousel carousel slide">
+      <div class="carousel-inner">
+         <div class="form-item carousel-item active">
+            <div class="form-container mx-auto">
                <form class="footballForm" method="GET" action="run/" data-url="{{ request.build_absolute_uri|safe }}">
                   <div class="row">
                      <div class="col-sm">
@@ -87,23 +87,21 @@
                </form>
             </div>
          </div>
-      </div>
-      <div class="carousel-item result-item">
-         <div class="row justify-content-center">
-            <div class="col-11 col-md-9 col-lg-7 col-xl-6">
+         <div class="carousel-item result-item">
+            <div class="results-container mx-auto">
                <div class="card results-card">
                   <div class="card-header results-card-header">
                      <div class="row score-row">
                         <div class="col team1-name-col">
                            <h5 class="team1-name m-0"></h5>
                         </div>
-                        <div class="col-auto goals1-col text-right px-0">
+                        <div class="col-auto goals1-col text-right p-0">
                            <h5 class="score team1-score m-0"></h5>
                         </div>
                         <div class="col-auto dash-col text-center">
                            <h5 class="score dash m-0">-</h5>
                         </div>
-                        <div class="col-auto goals2-col px-0">
+                        <div class="col-auto goals2-col p-0">
                            <h5 class="score team2-score m-0"></h5>
                         </div>
                         <div class="col team2-name-col text-right">

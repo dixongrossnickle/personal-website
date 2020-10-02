@@ -12,6 +12,15 @@ h2 {
   padding: 2rem 0;
 }
 
+.form-container {
+  width: 80%;
+}
+
+.results-container {
+  width: 100%;
+  padding: 0 15px;
+}
+
 .select-card-header,
 .results-card-header {
   background-color: #474749;
@@ -43,6 +52,7 @@ h2 {
 }
 
 .score {
+  display: inline-block;
   font-size: 2.5rem;
 }
 
@@ -101,6 +111,12 @@ h2 {
     font-size: 1.5rem;
   }
 
+  .form-container,
+  .results-container {
+    width: 75%;
+    padding: 0;
+  }
+
   .select-card-header {
     padding: .75rem 1.25rem;
   }
@@ -112,6 +128,7 @@ h2 {
   }
 
   .score {
+    display: inline-block;
     font-size: 3.2rem;
   }
 
@@ -123,6 +140,14 @@ h2 {
 @media screen and (min-width: 960px) {
   h2 {
     font-size: 2.75rem;
+  }
+
+  .form-container {
+    width: 60%;
+  }
+
+  .results-container {
+    width: 65%;
   }
 
   .form-item,
@@ -150,6 +175,16 @@ h2 {
 }
 
 @media screen and (min-width: 1200px) {
+  .form-container {
+    width: 50%;
+    max-width: 720px;
+  }
+
+  .results-container {
+    width: 60%;
+    max-width: 865px;
+  }
+
   .form-item,
   .result-item {
     padding-bottom: 6rem;
