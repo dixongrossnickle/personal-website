@@ -52,7 +52,6 @@ h2 {
 }
 
 .score {
-  display: inline-block;
   font-size: 2.5rem;
 }
 
@@ -181,8 +180,8 @@ h2 {
   }
 
   .results-container {
-    width: 60%;
-    max-width: 865px;
+    width: 53%;
+    max-width: 765px;
   }
 
   .form-item,
