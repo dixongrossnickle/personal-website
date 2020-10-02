@@ -1,3 +1,4 @@
+# Import path to CSV's from Django settings
 from mysite.settings import FOOTBALL_CSV_DIR
 import pandas
 
