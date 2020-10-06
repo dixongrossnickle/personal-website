@@ -71,17 +71,17 @@ def handle_error(error, request, away_id, HomeTeam, AwayTeam):
         submsg1 = ''
         submsg2 = ''
         if HomeTeam != '':
-            submsg1 += f'  [FOUND: {HomeTeam.club_name}]'
+            submsg1 += f' [FOUND: {HomeTeam.club_name}]'
         else:
             try:
                 AwayTeam = Team(away_id, 'away')
-                submsg2 += f'  [FOUND: {AwayTeam.club_name}]'
+                submsg2 += f' [FOUND: {AwayTeam.club_name}]'
             except KeyError:
                 pass
-        message = "\nKEY ERROR — Could not find one or both teams. The URL variables "\
-            +f"given were:\n\nhome:  {request.GET['home']}{submsg1}\n\naway:  {request.GET['away']}{submsg2}\n"\
-            +"\nVisit https://github.com/dixongrossnickle/personal-website and make sure variables "\
-            +"in your url match the values in the README documentation exactly.\n"
+        message = "KEY ERROR — Could not find one or both teams. The URL variables "\
+            +f"given were: HOME: {request.GET['home']}{submsg1}  AWAY: {request.GET['away']}{submsg2}. "\
+            +"Visit https://github.com/dixongrossnickle/personal-website and make sure variables "\
+            +"in your url match the values in the README documentation exactly."
     else:
         message = "\nUNKNOWN ERROR — An unknown error occurred during simulation. I've been notified and will fix it soon.\n"
     if not DEBUG:
