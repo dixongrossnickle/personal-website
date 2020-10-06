@@ -84,7 +84,7 @@ def handle_error(error, request, away_id, HomeTeam, AwayTeam):
             +"in your url match the values in the README documentation exactly.\n"
     else:
         message = "\nUNKNOWN ERROR — An unknown error occurred during simulation. I've been notified and will fix it soon.\n"
-    if DEBUG == False:
+    if not DEBUG:
         subject = 'Simulator – Internal Server Error'
         send_mail(subject, message, EMAIL_HOST_USER, ['dixon.grossnickle@gmail.com'])
     response =  JsonResponse({

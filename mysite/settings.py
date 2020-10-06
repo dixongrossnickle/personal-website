@@ -81,7 +81,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Logging
-if DEBUG == False:
+if not DEBUG:
     log_level = 'WARNING'
     LOGGING = {
         'version': 1,
