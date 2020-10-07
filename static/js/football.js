@@ -1,4 +1,5 @@
 // ================  Functions for the football match simulator  ================
+const RESULTS_CARD = '<div class="card results-card"><div class="card-header results-card-header"><div class="row score-row"><div class="col team1-name-col"><h5 class="team1-name m-0"></h5></div><div class="col-auto goals1-col p-0"><h5 class="score team1-score m-0"></h5></div><div class="col-auto dash-col"><h5 class="score dash m-0">-</h5></div><div class="col-auto goals2-col p-0"><h5 class="score team2-score m-0"></h5></div><div class="col team2-name-col text-right"><h5 class="team2-name m-0"></h5></div></div></div><div class="card-body results-card-body"></div></div>';
 
 // Handle AJAX request error
 function handleAjaxError(jqXHR, exception) {
@@ -154,22 +155,10 @@ function appendResults(results, homeTeam, awayTeam, matchEvents) {
             eventHTML = `<div class='red-card'></div>`;
       }
       if (matchEvents[min].team == homeTeam.name) {
-         $cardBody.append(
-         `<div class='row events-row align-items-center'>
-            <div class='col-4 events team1-event-name'>${matchEvents[min].player}</div>
-            <div class='col text-nowrap events team1-event-min text-right'>${`${min}'`}</div>
-            <div class='col-1 events team1-event-type p-0 text-center'>${eventHTML}</div>
-            <div class='col-6'></div>
-         </div>`);
+         $cardBody.append(`<div class='row events-row align-items-center'><div class='col-4 events team1-event-name'>${matchEvents[min].player}</div><div class='col text-nowrap events team1-event-min text-right'>${`${min}'`}</div><div class='col-1 events team1-event-type p-0 text-center'>${eventHTML}</div><div class='col-6'></div></div>`);
 
       } else if (matchEvents[min].team == awayTeam.name) {
-         $cardBody.append(
-         `<div class='row events-row align-items-center'>
-            <div class='col-6'></div>
-            <div class='col-1 events team2-event-type p-0 text-center'>${eventHTML}</div>
-            <div class='col text-nowrap events team2-event-min'>${`${min}'`}</div>
-            <div class='col-4 events team2-event-name text-right'>${matchEvents[min].player}</div>
-         </div>`);
+         $cardBody.append(`<div class='row events-row align-items-center'><div class='col-6'></div><div class='col-1 events team2-event-type p-0 text-center'>${eventHTML}</div><div class='col text-nowrap events team2-event-min'>${`${min}'`}</div><div class='col-4 events team2-event-name text-right'>${matchEvents[min].player}</div></div>`);
       }
       i += 1;
    }
@@ -199,7 +188,7 @@ function changeBtnText() {
 const $footballForm = $('.footballForm');
 function ajaxRequest() {
    return new Promise((res, rej) => {
-      let thisURL = `${$footballForm.attr('data-url')}${$footballForm.attr('action')}`;
+      let thisURL = $footballForm.attr('data-url');
       let team1Val = $('#teams1').val();
       let team2Val = $('#teams2').val();
       $.ajax({
@@ -256,14 +245,13 @@ $(document).ready(function() {
       animateCarousel(e);
    });
 
-   // After carousel slide (Reset 'simulating...' button / remove match results)
+   // After carousel slide (Reset 'simulating...' button / remove & replace results card)
    $('.football-carousel').on('slid.bs.carousel', function(e) {
       if (e.from == 0) {
          $('.sim-button').val('simulate').prop('disabled', false);
       } else if (e.from == 1) {
-         $('.events-row').remove();
-         $('.team1-name, .team2-name, .team1-score, .team2-score').empty();
-         $('.results-card-body').removeClass('hide-body');
+         $('.results-card').remove();
+         $('.results-container').prepend(RESULTS_CARD);
       }
    });
 
@@ -286,6 +274,9 @@ $(document).ready(function() {
    // Trigger changes for league select and update last selected variables
    $('#leagues1, #leagues2').trigger('change');
    updateLastSelected();
+
+   // Prepend results card
+   $('.results-container').prepend(RESULTS_CARD);
 
    // Initialize carousel
    $('.football-carousel').carousel({

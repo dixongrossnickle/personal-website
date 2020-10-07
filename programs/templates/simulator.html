@@ -30,7 +30,7 @@
       <div class="carousel-inner">
          <div class="form-item carousel-item active">
             <div class="form-container mx-auto">
-               <form class="footballForm" method="GET" action="run/" data-url="{{ request.build_absolute_uri|safe }}">
+               <form class="footballForm" method="GET" data-url="{% url 'run' %}">
                   <div class="row">
                      <div class="col-sm">
                         <div class="card select-card top-select-card">
@@ -91,30 +91,7 @@
          </div>
          <div class="carousel-item result-item">
             <div class="results-container mx-auto">
-               <div class="card results-card">
-                  <div class="card-header results-card-header">
-                     <div class="row score-row">
-                        <div class="col team1-name-col">
-                           <h5 class="team1-name m-0"></h5>
-                        </div>
-                        <div class="col-auto goals1-col p-0">
-                           <h5 class="score team1-score m-0"></h5>
-                        </div>
-                        <div class="col-auto dash-col">
-                           <h5 class="score dash m-0">-</h5>
-                        </div>
-                        <div class="col-auto goals2-col p-0">
-                           <h5 class="score team2-score m-0"></h5>
-                        </div>
-                        <div class="col team2-name-col text-right">
-                           <h5 class="team2-name m-0"></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="card-body results-card-body">
-                     <!-- Match results inserted here by javascript -->
-                  </div>
-               </div>
+               <!-- Results card inserted here by javascript (football.js) -->
                <div class="d-flex justify-content-center button-div">
                   <input type="button" value="reset" class="btn btn-dark btn-lg reset-btn" tabindex="0">
                </div>
