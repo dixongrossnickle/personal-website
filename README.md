@@ -1,5 +1,5 @@
 ***
-## [https://dixongrossnickle.com/sim](https://dixongrossnickle.com/sim)
+## [https://dixongrossnickle.com/sim](https://dixongrossnickle.com)
 ***
 <br/>
 
