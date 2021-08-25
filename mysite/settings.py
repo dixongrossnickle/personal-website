@@ -15,7 +15,7 @@ FOOTBALL_CSV_DIR = os.path.join(BASE_DIR, 'programs/football_sim/football_data',
 
 SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
